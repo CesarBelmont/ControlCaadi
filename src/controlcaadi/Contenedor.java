@@ -24,6 +24,9 @@ public class Contenedor extends javax.swing.JFrame {
         ErrorTelefono.setVisible(false);
         ErrorNombre.setVisible(false);
         ErrorCarrera.setVisible(false);
+        labelOP.setVisible(false);
+        FieldOP.setVisible(false);
+        ErrorCarreraOP.setVisible(false);
     }
 
     /**
@@ -42,7 +45,6 @@ public class Contenedor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Nombre_Usuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        Carrera_Usuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Telefono_Usuario = new javax.swing.JTextField();
         Alta = new javax.swing.JButton();
@@ -53,6 +55,10 @@ public class Contenedor extends javax.swing.JFrame {
         ErrorTelefono = new javax.swing.JLabel();
         ErrorCarrera = new javax.swing.JLabel();
         Test = new javax.swing.JLabel();
+        Carrera_Usuario = new javax.swing.JComboBox<>();
+        FieldOP = new javax.swing.JTextField();
+        labelOP = new javax.swing.JLabel();
+        ErrorCarreraOP = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         ID_Baja = new javax.swing.JTextField();
@@ -104,12 +110,6 @@ public class Contenedor extends javax.swing.JFrame {
 
         jLabel3.setText("Carrera");
 
-        Carrera_Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Carrera_UsuarioActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Telefono");
 
         Telefono_Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class Contenedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Correo");
+        jLabel8.setText("Correo (No obligatorio)");
 
         Correo_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,38 +135,42 @@ public class Contenedor extends javax.swing.JFrame {
 
         ErrorID.setForeground(new java.awt.Color(255, 51, 51));
         ErrorID.setText("Verifica esta informacion");
-        ErrorID.setEnabled(false);
 
         ErrorNombre.setForeground(new java.awt.Color(255, 51, 51));
         ErrorNombre.setText("Verifica esta informacion");
-        ErrorNombre.setEnabled(false);
 
         ErrorTelefono.setForeground(new java.awt.Color(255, 51, 51));
         ErrorTelefono.setText("Verifica esta informacion");
-        ErrorTelefono.setEnabled(false);
 
         ErrorCarrera.setForeground(new java.awt.Color(255, 51, 51));
-        ErrorCarrera.setText("Verifica esta informacion");
-        ErrorCarrera.setEnabled(false);
+        ErrorCarrera.setText("Selecciona una opcion");
+
+        Carrera_Usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Elige una opcion---", "Sistemas", "LDII", "FLE-ELE", "LRI", "Logistica Empresarial", "Otra" }));
+        Carrera_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Carrera_UsuarioActionPerformed(evt);
+            }
+        });
+
+        labelOP.setText("Carrera");
+
+        ErrorCarreraOP.setForeground(java.awt.Color.red);
+        ErrorCarreraOP.setText("No debe ir vacio");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(337, 337, 337))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Carrera_Usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Telefono_Usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ErrorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -176,20 +180,34 @@ public class Contenedor extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Nombre_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ErrorNombre)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(ErrorNombre))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Telefono_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8)
+                            .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(177, 177, 177))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 259, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Alta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(226, 226, 226))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(277, 277, 277)
+                                .addComponent(Alta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Carrera_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ErrorCarrera))
+                                    .addComponent(jLabel3))
+                                .addGap(84, 84, 84)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelOP)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(FieldOP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ErrorCarreraOP)))))
+                        .addContainerGap(145, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,29 +224,31 @@ public class Contenedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ErrorNombre))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(Test)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carrera_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ErrorCarrera))
+                .addGap(9, 9, 9)
+                .addComponent(Test)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8))
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Telefono_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ErrorTelefono))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(labelOP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Carrera_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ErrorCarrera)
+                    .addComponent(FieldOP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ErrorCarreraOP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 18, Short.MAX_VALUE)
                 .addComponent(Alta)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         jTabbedPane1.addTab("Alta Usuario", jPanel1);
@@ -267,29 +287,23 @@ public class Contenedor extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(Nombre_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(ID_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(Nombre_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Telefono_Baja, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                .addComponent(Carrera_Baja, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(ID_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 259, Short.MAX_VALUE)
-                .addComponent(Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Carrera_Baja, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(Telefono_Baja, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Correo_Baja, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(139, 139, 139)
+                        .addComponent(Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,16 +321,20 @@ public class Contenedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Carrera_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Telefono_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Telefono_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Baja)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(jLabel10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(Baja)
+                        .addGap(50, 50, 50))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Baja Usuario", jPanel2);
@@ -335,7 +353,7 @@ public class Contenedor extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ID_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,7 +362,7 @@ public class Contenedor extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ID_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(Entrada)
                 .addGap(38, 38, 38))
         );
@@ -365,7 +383,7 @@ public class Contenedor extends javax.swing.JFrame {
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ID_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +392,7 @@ public class Contenedor extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ID_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(Salida)
                 .addGap(38, 38, 38))
         );
@@ -389,7 +407,7 @@ public class Contenedor extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Registro Horas", jPanel3);
@@ -407,7 +425,7 @@ public class Contenedor extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
+                .addContainerGap(373, Short.MAX_VALUE)
                 .addComponent(Consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(231, 231, 231))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -436,7 +454,7 @@ public class Contenedor extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Fecha_F, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(Consultar)
                 .addGap(33, 33, 33))
         );
@@ -457,81 +475,46 @@ public class Contenedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Carrera_BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carrera_BajaActionPerformed
-
-    }//GEN-LAST:event_Carrera_BajaActionPerformed
-
-    private void Telefono_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Telefono_UsuarioActionPerformed
-
-    }//GEN-LAST:event_Telefono_UsuarioActionPerformed
-
-    private void ID_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_UsuarioActionPerformed
-
-    }//GEN-LAST:event_ID_UsuarioActionPerformed
-
     private void BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaActionPerformed
 
     }//GEN-LAST:event_BajaActionPerformed
 
-    private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
-        try {
-            int ID = Integer.parseInt(ID_Usuario.getText());
-        } catch (NumberFormatException | NullPointerException e) {
-            ErrorID.setVisible(true);
-            ErrorID.enable(true);
-        }
-        try {
-            long Telefono = Integer.parseInt(Telefono_Usuario.getText());
-        } catch (NumberFormatException | NullPointerException e) {
-            ErrorTelefono.setVisible(true);
-            ErrorTelefono.enable(true);
-        }
-        String Nombre = Nombre_Usuario.getText();
-        String Carrera = Carrera_Usuario.getText();
-        String Correo = Correo_Usuario.getText();
-        if (Nombre.isEmpty() || Nombre.isBlank()) {
-            ErrorNombre.setVisible(true);
-            ErrorNombre.enable(true);
-        }
-        if (Carrera.isEmpty() || Carrera.isBlank()) {
-            ErrorCarrera.setVisible(true);
-            ErrorCarrera.enable(true);
-        }
-        if (ErrorCarrera.isEnabled() || ErrorNombre.isEnabled() || ErrorTelefono.isEnabled() || ErrorID.isEnabled()) {
-           JOptionPane.showMessageDialog(new Error(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
-           ErrorID.disable();
-           ErrorNombre.disable();
-           ErrorCarrera.disable();
-           ErrorTelefono.disable();
-        } else {
-            int a;
-            a = JOptionPane.showConfirmDialog(new Confirmacion(), "Dar de alta a: " + Nombre, "Confirmar accion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            String b= Integer.toString(a);
-            Test.setText(b);
-        }
+    private void ID_BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_BajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ID_BajaActionPerformed
 
-    }//GEN-LAST:event_AltaActionPerformed
+    private void Carrera_BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carrera_BajaActionPerformed
 
-    private void Nombre_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nombre_UsuarioActionPerformed
-
-    }//GEN-LAST:event_Nombre_UsuarioActionPerformed
+    }//GEN-LAST:event_Carrera_BajaActionPerformed
 
     private void Carrera_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Carrera_UsuarioActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_Carrera_UsuarioActionPerformed
 
     private void Correo_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Correo_UsuarioActionPerformed
 
     }//GEN-LAST:event_Correo_UsuarioActionPerformed
 
-    private void ID_BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_BajaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ID_BajaActionPerformed
+    private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
+        if(verifica()){
+            JOptionPane.showConfirmDialog(new Confirmacion(), "Dar de alta", "Agregar al usuario: "+ Nombre_Usuario.getText() , JOptionPane.YES_NO_OPTION);
+        }
+    }//GEN-LAST:event_AltaActionPerformed
+
+    private void Telefono_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Telefono_UsuarioActionPerformed
+
+    }//GEN-LAST:event_Telefono_UsuarioActionPerformed
+
+    private void Nombre_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nombre_UsuarioActionPerformed
+
+    }//GEN-LAST:event_Nombre_UsuarioActionPerformed
+
+    private void ID_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_UsuarioActionPerformed
+
+    }//GEN-LAST:event_ID_UsuarioActionPerformed
 
     public class Confirmacion extends JFrame {
         public void Ventana() {
-            getContentPane().setBackground(Color.DARK_GRAY);
-            setTitle("Confirm Dialog in Frame");
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setVisible(true);
             setResizable(false);
@@ -539,15 +522,55 @@ public class Contenedor extends javax.swing.JFrame {
             getContentPane().setLayout(null);
         }
     }
-    public class Error extends JFrame{
-        public void Ventana(){
-            getContentPane().setBackground(Color.DARK_GRAY);
-            setTitle("Confirm Dialog in Frame");
+
+    public class Error extends JFrame {
+        public void Ventana() {
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setVisible(true);
             setResizable(false);
             setSize(400, 300);
             getContentPane().setLayout(null);
+        }
+    }
+
+    public boolean verifica() {
+        ErrorID.setVisible(false);
+        ErrorTelefono.setVisible(false);
+        ErrorNombre.setVisible(false);
+        ErrorCarrera.setVisible(false);
+        ErrorCarreraOP.setVisible(false);
+        String opt= (String)Carrera_Usuario.getSelectedItem();
+        String Nombre = Nombre_Usuario.getText();
+        String Correo = Correo_Usuario.getText();
+        String Carrera = FieldOP.getText();
+        try {
+            int ID = Integer.parseInt(ID_Usuario.getText());
+        } catch (NumberFormatException | NullPointerException e) {
+            ErrorID.setVisible(true);
+            JOptionPane.showMessageDialog(new Error(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            long Telefono = Integer.parseInt(Telefono_Usuario.getText());
+        } catch (NumberFormatException | NullPointerException e) {
+            ErrorTelefono.setVisible(true);
+            JOptionPane.showMessageDialog(new Error(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
+        }
+        if (Nombre.isEmpty() || Nombre.isBlank()) {
+            ErrorNombre.setVisible(true);
+            JOptionPane.showMessageDialog(new Error(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
+        }
+        if("---Elige una opcion---".equals(opt)){
+            ErrorCarrera.setVisible(true);
+        }
+        if("Otra".equals(opt)){
+           labelOP.setVisible(true);
+           FieldOP.setVisible(true);
+           }
+        
+        if(ErrorID.isShowing()||ErrorNombre.isShowing()||ErrorCarrera.isShowing()||ErrorTelefono.isShowing()||ErrorCarreraOP.isShowing()){
+            return false;
+        }else{
+            return true;
         }
     }
 
@@ -590,17 +613,19 @@ public class Contenedor extends javax.swing.JFrame {
     private javax.swing.JButton Alta;
     private javax.swing.JButton Baja;
     private javax.swing.JTextField Carrera_Baja;
-    private javax.swing.JTextField Carrera_Usuario;
+    private javax.swing.JComboBox<String> Carrera_Usuario;
     private javax.swing.JButton Consultar;
     private javax.swing.JTextField Correo_Baja;
     private javax.swing.JTextField Correo_Usuario;
     private javax.swing.JButton Entrada;
     private javax.swing.JLabel ErrorCarrera;
+    private javax.swing.JLabel ErrorCarreraOP;
     private javax.swing.JLabel ErrorID;
     private javax.swing.JLabel ErrorNombre;
     private javax.swing.JLabel ErrorTelefono;
     private javax.swing.JTextField Fecha_F;
     private javax.swing.JTextField Fecha_I;
+    private javax.swing.JTextField FieldOP;
     private javax.swing.JTextField ID_Baja;
     private javax.swing.JTextField ID_Consulta;
     private javax.swing.JTextField ID_Entrada;
@@ -635,5 +660,6 @@ public class Contenedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel labelOP;
     // End of variables declaration//GEN-END:variables
 }
