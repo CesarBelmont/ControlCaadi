@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -99,6 +100,8 @@ public class Contenedor extends javax.swing.JFrame {
         ErrorSalida = new javax.swing.JLabel();
         JLabel25 = new javax.swing.JLabel();
         Hora_Salida = new javax.swing.JTextField();
+        dummy = new javax.swing.JLabel();
+        dummy2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         ID_Consulta = new javax.swing.JTextField();
@@ -491,6 +494,10 @@ public class Contenedor extends javax.swing.JFrame {
 
         Hora_Salida.setEditable(false);
 
+        dummy.setText("jLabel29");
+
+        dummy2.setText("jLabel29");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -503,17 +510,22 @@ public class Contenedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ErrorSalida))
                     .addComponent(JLabel25)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Hora_Salida, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Nombre_Salida, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Tipo_Salida, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Carrera_Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
-                .addContainerGap(496, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Hora_Salida, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nombre_Salida, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Tipo_Salida, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Carrera_Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                        .addGap(231, 231, 231)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dummy)
+                            .addComponent(dummy2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,11 +539,18 @@ public class Contenedor extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Nombre_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Tipo_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nombre_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dummy))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Tipo_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(dummy2)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -540,7 +559,7 @@ public class Contenedor extends javax.swing.JFrame {
                 .addComponent(JLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Hora_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(Salida)
                 .addGap(38, 38, 38))
         );
@@ -728,7 +747,7 @@ public class Contenedor extends javax.swing.JFrame {
                 Opt = JOptionPane.showConfirmDialog(new PopUp(), "Dar de baja: " + Nombre_Baja.getText(), "Eliminar Usuario", JOptionPane.YES_OPTION); //Si=0, No=1
                 if (Opt == 0) {
                     String query = "delete from usuario where id='" + getIDBaja() + "'";
-                    String query2= "delete from horas where id='" + getIDBaja() + "'";
+                    String query2 = "delete from horas where id='" + getIDBaja() + "'";
                     PreparedStatement Stmt = conn.prepareStatement(query);
                     PreparedStatement Stmt2 = conn.prepareStatement(query2);
                     Stmt.executeUpdate();
@@ -736,7 +755,7 @@ public class Contenedor extends javax.swing.JFrame {
                     conn.close();
                     JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.OK_OPTION);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException ex) {
@@ -806,15 +825,24 @@ public class Contenedor extends javax.swing.JFrame {
                     String hora = hora();
                     Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDEntrada())));
                     try {
-                        String query = "insert into horas (id,fecha,entrada,id_fecha)" + "values (?,?,?,?)";
-                        PreparedStatement stmt = conn.prepareStatement(query);
-                        stmt.setLong(1, getIDEntrada());
-                        stmt.setString(2, fecha);
-                        stmt.setString(3, hora);
-                        stmt.setLong(4, id_fecha);
-                        Hora_Entrada.setText(hora);
-                        stmt.execute();
-                        conn.close();
+                        if (!Repetido()) {
+                            String query = "insert into horas (id,fecha,entrada,id_fecha)" + "values (?,?,?,?)";
+                            PreparedStatement stmt = conn.prepareStatement(query);
+                            stmt.setLong(1, getIDEntrada());
+                            stmt.setString(2, fecha);
+                            stmt.setString(3, hora);
+                            stmt.setLong(4, id_fecha);
+                            Hora_Entrada.setText(hora);
+                            stmt.execute();
+                            conn.close();
+                        } else {
+                            String query = "update horas set entrada = ? where id_Fecha='" + id_fecha + "'";
+                            PreparedStatement Stmt = conn.prepareStatement(query);
+                            Stmt.setString(1, hora);
+                            Hora_Entrada.setText(hora);
+                            Stmt.executeUpdate();
+                            conn.close();
+                        }
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Error 404", JOptionPane.WARNING_MESSAGE);
                         System.err.println(e.getMessage());
@@ -838,6 +866,7 @@ public class Contenedor extends javax.swing.JFrame {
             ErrorSalida.setVisible(true);
         }
         try {
+            Long ms = 0l;
             ResultSet rs;
             Statement stm;
             String url = "jdbc:mysql://localhost:3306/caadi?zerouseJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -856,17 +885,51 @@ public class Contenedor extends javax.swing.JFrame {
                     String horaS = horaFormato.format(horaSQL);
                     Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDSalida())));
                     try {
-                        String query = "update horas set salida = ? where id_Fecha='" + id_fecha + "'";
-                        PreparedStatement Stmt = conn.prepareStatement(query);
-                        Stmt.setString(1, horaS);
-                        Hora_Salida.setText(horaS);
-                        Stmt.executeUpdate();
-                        conn.close();
+                        if (!horasE()) {
+                            String query = "update horas set salida = ? where id_Fecha='" + id_fecha + "'";
+                            PreparedStatement Stmt = conn.prepareStatement(query);
+                            Stmt.setString(1, horaS);
+                            Hora_Salida.setText(horaS);
+                            Stmt.executeUpdate();
+                            conn.close();
+                            registroHoras();
+                        } else {
+                            rs = stm.executeQuery("select horas from horas" + " where id_fecha='" + id_fecha + "'");
+                            if (rs.next()) {
+                                //Tiempo antes del update
+                                String tiempo = rs.getString(1);
+                                Long horas, minutos, segundos;
+                                segundos = Long.parseLong(tiempo.substring(6));
+                                minutos = Long.parseLong(tiempo.substring(3, 5));
+                                horas = Long.parseLong(tiempo.substring(0, 2));
+                                ms = (horas * 3600000) + (minutos * 60000) + (segundos * 1000);
+                                String query = "update horas set salida = ? where id_Fecha='" + id_fecha + "'";
+                                PreparedStatement Stmt = conn.prepareStatement(query);
+                                Stmt.setString(1, horaS);
+                                Hora_Salida.setText(horaS);
+                                Stmt.executeUpdate();
+                               
+                                registroHoras();
+                            }
+                            //Suma de las dos salidas
+                            ms += horasEx();
+                            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(ms),
+                                    TimeUnit.MILLISECONDS.toMinutes(ms) % TimeUnit.HOURS.toMinutes(1),
+                                    TimeUnit.MILLISECONDS.toSeconds(ms) % TimeUnit.MINUTES.toSeconds(1));
+                            dummy.setText(Long.toString(ms));
+                            dummy2.setText(nuevoTiempo);
+                            String query = "update horas set horas = ? where id_Fecha='" + id_fecha + "'";
+                            PreparedStatement Stmt = conn.prepareStatement(query);
+                            Stmt.setString(1, nuevoTiempo);
+                            Stmt.executeUpdate();
+                             conn.close();
+                        }
+
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
                         System.err.println(e.getMessage());
                     }
-                    registroHoras();
+
                 }
             } else {
                 JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
@@ -886,13 +949,39 @@ public class Contenedor extends javax.swing.JFrame {
             System.err.print(e.getMessage());
             ErrorConsulta.setVisible(true);
         }
-        
+
 
     }//GEN-LAST:event_ConsultarActionPerformed
 
     private void ConsultarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultarFechaActionPerformed
+
+    public long horasEx() {
+        ResultSet rs;
+        Statement stm;
+        Long ms = 0L;
+        try {
+            String url = "jdbc:mysql://localhost:3306/caadi?zerouseJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            Connection conn = DriverManager.getConnection(url, "root", "1123581321");
+            stm = conn.createStatement();
+            Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDSalida())));
+            rs = stm.executeQuery("select horas from horas" + " where id_Fecha='" + id_fecha + "'");
+            if (rs.next()) {
+                //Nuevo tiempo de salida
+                String tiempo = rs.getString(1);
+                Long horas, minutos, segundos;
+                segundos = Long.parseLong(tiempo.substring(6));
+                minutos = Long.parseLong(tiempo.substring(3, 5));
+                horas = Long.parseLong(tiempo.substring(0, 2));
+                ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            System.err.println(e.getMessage());
+        }
+        return ms;
+    }
 
     public String fecha() {
         String url = "jdbc:mysql://localhost:3306/caadi?zerouseJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -933,6 +1022,48 @@ public class Contenedor extends javax.swing.JFrame {
             setSize(400, 300);
             getContentPane().setLayout(null);
         }
+    }
+
+    public boolean Repetido() {
+        boolean R = false;
+        try {
+            Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDEntrada())));
+            ResultSet rs;
+            Statement stm;
+            String url = "jdbc:mysql://localhost:3306/caadi?zerouseJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            Connection conn = DriverManager.getConnection(url, "root", "1123581321");
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select * from horas" + " where id_fecha='" + id_fecha + "'");
+            if (rs.next()) {
+                String id = rs.getString(1);
+                R = !(id.isBlank() || id.isEmpty());
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            System.err.println(e.getMessage());
+        }
+        return R;
+    }
+
+    public boolean horasE() {
+        boolean R = false;
+        try {
+            Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDSalida())));
+            ResultSet rs;
+            Statement stm;
+            String url = "jdbc:mysql://localhost:3306/caadi?zerouseJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            Connection conn = DriverManager.getConnection(url, "root", "1123581321");
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select horas from horas" + " where id_fecha='" + id_fecha + "'");
+            if (rs.next()) {
+                String ex = rs.getString(1);
+                R = !(ex == null);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            System.err.println(e.getMessage());
+        }
+        return R;
     }
 
     public void registroHoras() {
@@ -1084,13 +1215,17 @@ public class Contenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1150,6 +1285,8 @@ public class Contenedor extends javax.swing.JFrame {
     private javax.swing.JTextField Tipo_Entrada;
     private javax.swing.JTextField Tipo_Salida;
     private javax.swing.JComboBox<String> Usuario_Tipo;
+    private javax.swing.JLabel dummy;
+    private javax.swing.JLabel dummy2;
     private javax.swing.JPanel fff;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
