@@ -743,75 +743,86 @@ public class Contenedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaActionPerformed
-        int Opt;
         try {
-            long baja = getIDBaja();
-            ErrorBaja.setVisible(false);
-        } catch (NumberFormatException | NullPointerException e) {
-            ErrorBaja.setVisible(true);
-        }
-        ResultSet rs;
-        Statement stm;
-        try {
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            stm = conn.createStatement();
-            rs = stm.executeQuery("select * from usuario" + " where id='" + getIDBaja() + "'");
-            if (rs.next()) {
-                Nombre_Baja.setText(rs.getString(2));
-                Tipo_Baja.setText(rs.getString(3));
-                Telefono_Baja.setText(rs.getString(4));
-                Carrera_Baja.setText(rs.getString(5));
-                Correo_Baja.setText(rs.getString(6));
-                Opt = JOptionPane.showConfirmDialog(new PopUp(), "Dar de baja: " + Nombre_Baja.getText(), "Eliminar Usuario", JOptionPane.YES_OPTION); //Si=0, No=1
-                if (Opt == 0) {
-                    String query = "delete from usuario where id='" + getIDBaja() + "'";
-                    String query2 = "delete from horas where id='" + getIDBaja() + "'";
-                    PreparedStatement Stmt = conn.prepareStatement(query);
-                    PreparedStatement Stmt2 = conn.prepareStatement(query2);
-                    Stmt.executeUpdate();
-                    Stmt2.executeUpdate();
-                    conn.close();
-                    JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.OK_OPTION);
-                }
-            } else {
-                JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
+            int Opt;
+            try {
+                long baja = getIDBaja();
+                ErrorBaja.setVisible(false);
+            } catch (NumberFormatException | NullPointerException e) {
+                ErrorBaja.setVisible(true);
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(new PopUp(), "Kabooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            ResultSet rs;
+            Statement stm;
+            try {
+                Connection conn = DriverManager.getConnection(url, user, pass);
+                stm = conn.createStatement();
+                rs = stm.executeQuery("select * from usuario" + " where id='" + getIDBaja() + "'");
+                if (rs.next()) {
+                    Nombre_Baja.setText(rs.getString(2));
+                    Tipo_Baja.setText(rs.getString(3));
+                    Telefono_Baja.setText(rs.getString(4));
+                    Carrera_Baja.setText(rs.getString(5));
+                    Correo_Baja.setText(rs.getString(6));
+                    Opt = JOptionPane.showConfirmDialog(new PopUp(), "Dar de baja: " + Nombre_Baja.getText(), "Eliminar Usuario", JOptionPane.YES_OPTION); //Si=0, No=1
+                    if (Opt == 0) {
+                        String query = "delete from usuario where id='" + getIDBaja() + "'";
+                        String query2 = "delete from horas where id='" + getIDBaja() + "'";
+                        PreparedStatement Stmt = conn.prepareStatement(query);
+                        PreparedStatement Stmt2 = conn.prepareStatement(query2);
+                        Stmt.executeUpdate();
+                        Stmt2.executeUpdate();
+                        conn.close();
+                        JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.OK_OPTION);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(new PopUp(), "Kabooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            }
+            Thread.sleep(5000);
+            cls();
+        } catch (InterruptedException e) {
+
         }
     }//GEN-LAST:event_BajaActionPerformed
 
     private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
-        int conf = 3;
-        if (verifica()) { //Si los datos estan correctos, se confirma su alta al sistema
-            conf = JOptionPane.showConfirmDialog(new PopUp(), "Dar de alta", "Agregar al usuario: " + Nombre_Usuario.getText(), JOptionPane.YES_NO_OPTION);
-            //Por razones que no comprendo 0=Si, 1=No                
-        } else {
-            JOptionPane.showMessageDialog(new PopUp(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
-        }
-        if (conf == 0) {
-            try {
-                Connection conn = DriverManager.getConnection(url, user, pass);
-                String query = "insert into usuario (id, Nombre, Tipo, Telefono,Carrera,Correo)" + "values (?,?,?,?,?,?)";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                stmt.setLong(1, getIdUsuario());
-                stmt.setString(2, getNombre());
-                stmt.setString(3, getTipo());
-                stmt.setLong(4, getTelefono());
-                stmt.setString(5, getCarrera());
-                stmt.setString(6, getCorreo());
-                stmt.execute();
-                conn.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(new PopUp(), "Kabooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+        try {
+            int conf = 3;
+            if (verifica()) { //Si los datos estan correctos, se confirma su alta al sistema
+                conf = JOptionPane.showConfirmDialog(new PopUp(), "Dar de alta", "Agregar al usuario: " + Nombre_Usuario.getText(), JOptionPane.YES_NO_OPTION);
+                //Por razones que no comprendo 0=Si, 1=No                
+            } else {
+                JOptionPane.showMessageDialog(new PopUp(), "Datos erroneos", "No se puede dar de alta", JOptionPane.ERROR_MESSAGE);
             }
-            ID_Usuario.setText("");
-            Nombre_Usuario.setText("");
-            Usuario_Tipo.setSelectedIndex(0);
-            Telefono_Usuario.setText("");
-            Carrera_Usuario.setSelectedIndex(0);
-            FieldOP.setText("");
-            Correo_Usuario.setText("");
+            if (conf == 0) {
+                try {
+                    Connection conn = DriverManager.getConnection(url, user, pass);
+                    String query = "insert into usuario (id, Nombre, Tipo, Telefono,Carrera,Correo)" + "values (?,?,?,?,?,?)";
+                    PreparedStatement stmt = conn.prepareStatement(query);
+                    stmt.setLong(1, getIdUsuario());
+                    stmt.setString(2, getNombre());
+                    stmt.setString(3, getTipo());
+                    stmt.setLong(4, getTelefono());
+                    stmt.setString(5, getCarrera());
+                    stmt.setString(6, getCorreo());
+                    stmt.execute();
+                    conn.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(new PopUp(), "Kabooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                }
+                ID_Usuario.setText("");
+                Nombre_Usuario.setText("");
+                Usuario_Tipo.setSelectedIndex(0);
+                Telefono_Usuario.setText("");
+                Carrera_Usuario.setSelectedIndex(0);
+                FieldOP.setText("");
+                Correo_Usuario.setText("");
+            }
+            Thread.sleep(5000);
+            cls();
+        } catch (InterruptedException e) {
 
         }
 
@@ -871,6 +882,7 @@ public class Contenedor extends javax.swing.JFrame {
             System.err.println(ex.getMessage());
             JOptionPane.showMessageDialog(new PopUp(), "Kabooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
         }
+
     }//GEN-LAST:event_EntradaActionPerformed
 
     private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
@@ -937,7 +949,6 @@ public class Contenedor extends javax.swing.JFrame {
                             Stmt.executeUpdate();
                             conn.close();
                         }
-
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
                     }
@@ -998,21 +1009,21 @@ public class Contenedor extends javax.swing.JFrame {
     private void ConsultarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarFechaActionPerformed
         String fechaI = getFechaI();
         String fechaF = getFechaF();
-        if(fechaI.isBlank()|| fechaI.isEmpty()){
+        if (fechaI.isBlank() || fechaI.isEmpty()) {
             JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
         }
-        if(fechaF.isBlank()|| fechaF.isEmpty()){
+        if (fechaF.isBlank() || fechaF.isEmpty()) {
             JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
         }
-        try{
-            long ms, tiempoMS=0;
+        try {
+            long ms, tiempoMS = 0;
             ResultSet rs;
             Statement stm;
             Connection conn = DriverManager.getConnection(url, user, pass);
             stm = conn.createStatement();
-            rs = stm.executeQuery("select * from horas where fecha>='" + fechaI + "' && fecha<='" + fechaF+ "'");
-           // select * from horas where fecha>='2019/10/15'&& fecha<='2019/10/18'
-           while (rs.next()) {
+            rs = stm.executeQuery("select * from horas where fecha>='" + fechaI + "' && fecha<='" + fechaF + "'");
+            // select * from horas where fecha>='2019/10/15'&& fecha<='2019/10/18'
+            while (rs.next()) {
                 String tiempo = rs.getString(6);
                 long horas, minutos, segundos;
                 segundos = Long.parseLong(tiempo.substring(6));
@@ -1020,20 +1031,20 @@ public class Contenedor extends javax.swing.JFrame {
                 horas = Long.parseLong(tiempo.substring(0, 2));
                 ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
                 tiempoMS += ms;
-           }
-           String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
+            }
+            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
                     TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
                     TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
             Horas_Fecha.setText(nuevoTiempo);
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
             System.err.println(e.getMessage());
         }
-        
+
     }//GEN-LAST:event_ConsultarFechaActionPerformed
 
-public long horasEx() {
+    public long horasEx() {
         ResultSet rs;
         Statement stm;
         Long ms = 0L;
@@ -1084,22 +1095,21 @@ public long horasEx() {
             System.err.println(ex.getMessage());
         }
         return "";
-    
 
-}
+    }
 
     public class PopUp extends JFrame {
 
-    public void Ventana() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setResizable(false);
-        setSize(400, 300);
-        getContentPane().setLayout(null);
+        public void Ventana() {
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setVisible(true);
+            setResizable(false);
+            setSize(400, 300);
+            getContentPane().setLayout(null);
+        }
     }
-}
 
-public boolean Repetido() {
+    public boolean Repetido() {
         boolean R = false;
         try {
             Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDEntrada())));
@@ -1170,15 +1180,45 @@ public boolean Repetido() {
         }
     }
 
-    public void inicioCamara() {
+    public void cls() {
+        Nombre_Usuario.setText("");
+        Correo_Usuario.setText("");
+        Carrera_Usuario.setSelectedIndex(0);
+        Usuario_Tipo.setSelectedIndex(0);
+        FieldOP.setText("");
+        ID_Usuario.setText("");
+        Telefono_Usuario.setText("");
+        ID_Entrada.setText("");
+        Nombre_Entrada.setText("");
+        Tipo_Entrada.setText("");
+        Carrera_Entrada.setText("");
+        Hora_Entrada.setText("");
+        ID_Salida.setText("");
+        Nombre_Salida.setText("");
+        Tipo_Salida.setText("");
+        Carrera_Salida.setText("");
+        Hora_Salida.setText("");
+        ID_Baja.setText("");
+        Nombre_Baja.setText("");
+        Correo_Baja.setText("");
+        Carrera_Baja.setText("");
+        Tipo_Baja.setText("");
+        Telefono_Baja.setText("");
+        ID_Consulta.setText("");
+        Nombre_Consulta.setText("");
+        Horas_Totales.setText("");
+        Historial.setText("");
+        Fecha_Inicial.setText("");
+        Fecha_Final.setText("");
+        Horas_Fecha.setText("");
 
     }
-    
-    public String getFechaI(){
+
+    public String getFechaI() {
         return Fecha_Inicial.getText();
     }
-    
-    public String getFechaF(){
+
+    public String getFechaF() {
         return Fecha_Final.getText();
     }
 
@@ -1225,7 +1265,7 @@ public boolean Repetido() {
     public long getIDConsulta() {
         return Long.parseLong(ID_Consulta.getText());
     }
-   
+
     //Obtener todos los datos y verificar la informacion ingresada
     public void Valores() {
         ErrorID.setVisible(false);
@@ -1297,33 +1337,17 @@ public boolean Repetido() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Contenedor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Contenedor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Contenedor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Contenedor
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contenedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
