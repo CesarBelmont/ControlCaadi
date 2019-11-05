@@ -57,6 +57,7 @@ public class Contenedor extends JFrame {
         ErrorSalida.setVisible(false);
         ErrorConsulta.setVisible(false);
         ErrorBaja.setVisible(false);
+        ErrorIDEX.setVisible(false);
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         panel = new WebcamPanel(webcam, false);
         panel.setPreferredSize(webcam.getViewSize());
@@ -64,23 +65,23 @@ public class Contenedor extends JFrame {
         panel.setBackground(Color.BLACK);
         panel.setBounds(0, 0, 400, 300);
         Camara.add(panel);
-        
+
         if (initialized.compareAndSet(false, true)) {
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
                     panel.start();
-                    ID_Entrada.grabFocus();
                 }
             });
         }
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        Tab1 = new javax.swing.JTabbedPane();
         TabAlta = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ID_Usuario = new javax.swing.JTextField();
@@ -122,9 +123,9 @@ public class Contenedor extends JFrame {
         Tipo_Baja = new javax.swing.JTextField();
         ErrorBaja = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel5 = new javax.swing.JPanel();
+        TabHoras = new javax.swing.JPanel();
+        Tab2 = new javax.swing.JTabbedPane();
+        PanelEntrada = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         ID_Entrada = new javax.swing.JTextField();
         Entrada = new javax.swing.JButton();
@@ -138,7 +139,7 @@ public class Contenedor extends JFrame {
         jLabel24 = new javax.swing.JLabel();
         Hora_Entrada = new javax.swing.JTextField();
         ImagenEntrada = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        PanelSalida = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         ID_Salida = new javax.swing.JTextField();
         Salida = new javax.swing.JButton();
@@ -152,6 +153,27 @@ public class Contenedor extends JFrame {
         JLabel25 = new javax.swing.JLabel();
         Hora_Salida = new javax.swing.JTextField();
         ImagenSalida = new javax.swing.JLabel();
+        PanelExtemporaneo = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        ID_EX = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        Fecha_EX = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        RegistrarEX = new javax.swing.JButton();
+        HorasEXE = new javax.swing.JTextField();
+        MinutosEXE = new javax.swing.JTextField();
+        HorasE = new javax.swing.JLabel();
+        MinutosE = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        HorasS = new javax.swing.JLabel();
+        MinutosS = new javax.swing.JLabel();
+        HorasEXS = new javax.swing.JTextField();
+        MinutosEXS = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        ImagenEX = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        ErrorIDEX = new javax.swing.JLabel();
         TabConsulta = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         ID_Consulta = new javax.swing.JTextField();
@@ -178,7 +200,7 @@ public class Contenedor extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
 
-        jTabbedPane1.setFocusable(false);
+        Tab1.setFocusable(false);
 
         jLabel1.setText("ID Usuario");
 
@@ -367,7 +389,7 @@ public class Contenedor extends JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Alta Usuario", TabAlta);
+        Tab1.addTab("Alta Usuario", TabAlta);
 
         jLabel5.setText("ID Usuario");
 
@@ -419,7 +441,6 @@ public class Contenedor extends JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ErrorBaja))
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9)
                             .addComponent(Nombre_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -427,8 +448,9 @@ public class Contenedor extends JFrame {
                             .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(TabBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(Tipo_Baja, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Carrera_Baja, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                                .addComponent(Carrera_Baja, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addGroup(TabBajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Baja, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -464,7 +486,7 @@ public class Contenedor extends JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 206, Short.MAX_VALUE))
+                        .addGap(0, 202, Short.MAX_VALUE))
                     .addGroup(TabBajaLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -473,9 +495,14 @@ public class Contenedor extends JFrame {
                 .addGap(50, 50, 50))
         );
 
-        jTabbedPane1.addTab("Baja Usuario", TabBaja);
+        Tab1.addTab("Baja Usuario", TabBaja);
 
-        jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Tab2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Tab2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Tab2FocusGained(evt);
+            }
+        });
 
         jLabel11.setText("ID");
 
@@ -511,41 +538,41 @@ public class Contenedor extends JFrame {
 
         ImagenEntrada.setText("   ");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelEntradaLayout = new javax.swing.GroupLayout(PanelEntrada);
+        PanelEntrada.setLayout(PanelEntradaLayout);
+        PanelEntradaLayout.setHorizontalGroup(
+            PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelEntradaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(PanelEntradaLayout.createSequentialGroup()
                         .addComponent(ID_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ErrorEntrada))
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(jLabel24)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(Hora_Entrada, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Carrera_Entrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                         .addComponent(Tipo_Entrada, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Nombre_Entrada, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(ImagenEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        PanelEntradaLayout.setVerticalGroup(
+            PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelEntradaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelEntradaLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ID_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ErrorEntrada))
                         .addGap(18, 18, 18)
@@ -566,12 +593,12 @@ public class Contenedor extends JFrame {
                         .addComponent(Hora_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Entrada)
-                        .addGap(0, 62, Short.MAX_VALUE))
+                        .addGap(0, 295, Short.MAX_VALUE))
                     .addComponent(ImagenEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Entrada", jPanel5);
+        Tab2.addTab("Entrada", PanelEntrada);
 
         jLabel13.setText("ID");
 
@@ -603,19 +630,19 @@ public class Contenedor extends JFrame {
 
         ImagenSalida.setText("   ");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelSalidaLayout = new javax.swing.GroupLayout(PanelSalida);
+        PanelSalida.setLayout(PanelSalidaLayout);
+        PanelSalidaLayout.setHorizontalGroup(
+            PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSalidaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSalidaLayout.createSequentialGroup()
                         .addComponent(ID_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ErrorSalida))
                     .addComponent(JLabel25)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(Hora_Salida, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -625,19 +652,19 @@ public class Contenedor extends JFrame {
                         .addComponent(Tipo_Salida, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Carrera_Salida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addComponent(ImagenSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        PanelSalidaLayout.setVerticalGroup(
+            PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSalidaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSalidaLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(PanelSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ID_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ErrorSalida))
                         .addGap(18, 18, 18)
@@ -658,27 +685,159 @@ public class Contenedor extends JFrame {
                         .addComponent(Hora_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Salida)
-                        .addGap(0, 63, Short.MAX_VALUE))
+                        .addGap(0, 293, Short.MAX_VALUE))
                     .addComponent(ImagenSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Salida", jPanel6);
+        Tab2.addTab("Salida", PanelSalida);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+        jLabel31.setText("ID");
+
+        jLabel32.setText("Fecha");
+
+        jLabel33.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel33.setText("aaaa/mm/dd");
+
+        jLabel34.setText("Hora Entrada");
+
+        RegistrarEX.setText("Registrar tiempo");
+        RegistrarEX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarEXActionPerformed(evt);
+            }
+        });
+
+        HorasE.setText("Horas");
+
+        MinutosE.setText("Minutos");
+
+        jLabel36.setText(":");
+
+        HorasS.setText("Horas");
+
+        MinutosS.setText("Minutos");
+
+        jLabel35.setText("Hora Salida");
+
+        ImagenEX.setText("   ");
+
+        jLabel42.setText(":");
+
+        ErrorIDEX.setForeground(java.awt.Color.red);
+        ErrorIDEX.setText("Verifica esta informacion");
+
+        javax.swing.GroupLayout PanelExtemporaneoLayout = new javax.swing.GroupLayout(PanelExtemporaneo);
+        PanelExtemporaneo.setLayout(PanelExtemporaneoLayout);
+        PanelExtemporaneoLayout.setHorizontalGroup(
+            PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                .addComponent(Fecha_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegistrarEX)
+                                    .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                            .addComponent(HorasS)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                            .addComponent(MinutosS))
+                                        .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                            .addComponent(HorasEXS, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(13, 13, 13)
+                                            .addComponent(MinutosEXS)))
+                                    .addComponent(jLabel31)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel34)
+                                    .addComponent(jLabel35)
+                                    .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                        .addComponent(ID_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ErrorIDEX)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(HorasE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                            .addComponent(HorasEXE, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MinutosE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MinutosEXE, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(ImagenEX, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        PanelExtemporaneoLayout.setVerticalGroup(
+            PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ID_EX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ErrorIDEX))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Fecha_EX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel33))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(HorasE)
+                            .addComponent(MinutosE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(HorasEXE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MinutosEXE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(HorasS)
+                            .addComponent(MinutosS))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(HorasEXS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MinutosEXS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(RegistrarEX)
+                        .addGap(0, 286, Short.MAX_VALUE))
+                    .addComponent(ImagenEX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Registro Horas", jPanel3);
+        Tab2.addTab("Tiempo Extemporaneo", PanelExtemporaneo);
+
+        javax.swing.GroupLayout TabHorasLayout = new javax.swing.GroupLayout(TabHoras);
+        TabHoras.setLayout(TabHorasLayout);
+        TabHorasLayout.setHorizontalGroup(
+            TabHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Tab2)
+        );
+        TabHorasLayout.setVerticalGroup(
+            TabHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Tab2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        Tab1.addTab("Registro Horas", TabHoras);
 
         jLabel15.setText("ID Usuario");
 
@@ -800,7 +959,7 @@ public class Contenedor extends JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Consultar)
                         .addContainerGap())
@@ -826,158 +985,108 @@ public class Contenedor extends JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("Consulta Horas", TabConsulta);
+        Tab1.addTab("Consulta Horas", TabConsulta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tab1, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tab1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaActionPerformed
-        int Opt;
-        try {
-            long baja = getIDBaja();
-            ErrorBaja.setVisible(false);
-        } catch (NumberFormatException | NullPointerException e) {
-            ErrorBaja.setVisible(true);
+    private void ConsultarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarFechaActionPerformed
+        String fechaI = getFechaI();
+        String fechaF = getFechaF();
+        if (fechaI.isEmpty()) {
+            JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
         }
-        ResultSet rs;
-        Statement stm;
+        if (fechaF.isEmpty()) {
+            JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
+        }
         try {
+            long ms, tiempoMS = 0;
+            ResultSet rs;
+            Statement stm;
             Connection conn = DriverManager.getConnection(url, user, pass);
             stm = conn.createStatement();
-            rs = stm.executeQuery("select * from usuario" + " where id='" + getIDBaja() + "'");
-            if (rs.next()) {
-                Nombre_Baja.setText(rs.getString(2));
-                Tipo_Baja.setText(rs.getString(3));
-                Telefono_Baja.setText(rs.getString(5));
-                Carrera_Baja.setText(rs.getString(4));
-                Correo_Baja.setText(rs.getString(6));
-                java.sql.Blob blob = rs.getBlob(7);
-                InputStream in = blob.getBinaryStream();
-                try {
-                    BufferedImage imag = ImageIO.read(in);
-                    Image image = imag;
-                    ImageIcon icon = new ImageIcon(image);
-                    imagen.setIcon(icon);
-                } catch (IOException ex) {
-                    Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Opt = JOptionPane.showConfirmDialog(new PopUp(), "Dar de baja: " + Nombre_Baja.getText(), "Eliminar Usuario", JOptionPane.YES_OPTION);
-                //Si=0, No=1
-                if (Opt == 0) {
-                    JPasswordField pf = new JPasswordField();
-                    int pasw = JOptionPane.showConfirmDialog(new PopUp(), pf, "Ingrese la contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-                    if (pasw == JOptionPane.OK_OPTION) {
-                        String admin = new String(pf.getPassword());
-                        if (admin.equals("hola")) {
-                            String query = "delete from usuario where id='" + getIDBaja() + "'";
-                            String query2 = "delete from horas where id='" + getIDBaja() + "'";
-                            PreparedStatement Stmt = conn.prepareStatement(query);
-                            PreparedStatement Stmt2 = conn.prepareStatement(query2);
-                            Stmt.executeUpdate();
-                            Stmt2.executeUpdate();
-                            conn.close();
-                            JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.OK_OPTION);
-                        } else {
-                            JOptionPane.showMessageDialog(new PopUp(), "Se notificará al personal de este incidente", "Contraseña incorrecta", JOptionPane.WARNING_MESSAGE);
-                        }
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
+            rs = stm.executeQuery("select * from horas where fecha>='" + fechaI + "' && fecha<='" + fechaF + "'");
+            while (rs.next()) {
+                String tiempo = rs.getString(6);
+                long horas, minutos, segundos;
+                segundos = Long.parseLong(tiempo.substring(6));
+                minutos = Long.parseLong(tiempo.substring(3, 5));
+                horas = Long.parseLong(tiempo.substring(0, 2));
+                ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
+                tiempoMS += ms;
             }
-        } catch (SQLException ex) {
+            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
+                    TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
+                    TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
+            Horas_Fecha.setText(nuevoTiempo);
+
+        } catch (SQLException e) {
             JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
         }
+    }//GEN-LAST:event_ConsultarFechaActionPerformed
 
-    }//GEN-LAST:event_BajaActionPerformed
-
-    private void EntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntradaActionPerformed
-        int Opt;
+    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+        ID_Consulta.requestFocusInWindow();
+        long consulta = 0;
+        ResultSet rs, rs2;
+        Statement stm, stm2;
         try {
-            long ent = getIDEntrada();
-            ErrorEntrada.setVisible(false);
+            consulta = getIDConsulta();
+            ErrorConsulta.setVisible(false);
         } catch (NumberFormatException | NullPointerException e) {
-            ErrorEntrada.setVisible(true);
+            System.err.print(e.getMessage());
+            ErrorConsulta.setVisible(true);
         }
-        ResultSet rs;
-        Statement stm;
         try {
+            long ms = 0l;
             Connection conn = DriverManager.getConnection(url, user, pass);
             stm = conn.createStatement();
-            rs = stm.executeQuery("select * from usuario" + " where id='" + getIDEntrada() + "'");
-            if (rs.next()) {
-                Nombre_Entrada.setText(rs.getString(2));
-                Tipo_Entrada.setText(rs.getString(3));
-                Carrera_Entrada.setText(rs.getString(5));
-                java.sql.Blob blob = rs.getBlob(7);
-                InputStream in = blob.getBinaryStream();
-                try {
-                    BufferedImage imag = ImageIO.read(in);
-                    Image image = imag;
-                    ImageIcon icon = new ImageIcon(image);
-                    ImagenEntrada.setIcon(icon);
-                } catch (IOException ex) {
-                    Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Opt = JOptionPane.showConfirmDialog(new PopUp(), "Entrada de: " + Nombre_Entrada.getText(), "Entrada", JOptionPane.YES_OPTION); //Si=0, No=1
-                if (Opt == 0) {
-                    String fecha = fecha();
-                    String hora = hora();
-                    Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDEntrada())));
-                    try {
-                        if (!Repetido()) {
-                            String query = "insert into horas (id,fecha,entrada,id_fecha)" + "values (?,?,?,?)";
-                            PreparedStatement stmt = conn.prepareStatement(query);
-                            stmt.setLong(1, getIDEntrada());
-                            stmt.setString(2, fecha);
-                            stmt.setString(3, hora);
-                            stmt.setLong(4, id_fecha);
-                            Hora_Entrada.setText(hora);
-                            stmt.execute();
-                            conn.close();
-                        } else {
-                            String query = "update horas set entrada = ? where id_Fecha='" + id_fecha + "'";
-                            PreparedStatement Stmt = conn.prepareStatement(query);
-                            Stmt.setString(1, hora);
-                            Hora_Entrada.setText(hora);
-                            Stmt.executeUpdate();
-                            conn.close();
-                        }
-                    } catch (SQLException e) {
-                        JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
-                        JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
-                        d.setLocation(600, 400);
-                        d.setVisible(true);
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            stm2 = conn.createStatement();
+            rs = stm.executeQuery("select * from horas" + " where id='" + getIDConsulta() + "'");
+            rs2 = stm2.executeQuery("select nombre from usuario where id='" + getIDConsulta() + "'");
+            Historial.setText("Fecha" + "\t" + "Horas realizadas" + "\n");
+            if (rs2.next()) {
+                Nombre_Consulta.setText(rs2.getString(1));
             }
-        } catch (SQLException ex) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
-            JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
-            d.setLocation(600, 400);
-            d.setVisible(true);
+            long tiempoMS = 0l;
+            while (rs.next()) {
+                String tiempo = rs.getString(6);
+                long horas, minutos, segundos;
+                segundos = Long.parseLong(tiempo.substring(6));
+                minutos = Long.parseLong(tiempo.substring(3, 5));
+                horas = Long.parseLong(tiempo.substring(0, 2));
+                ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
+                tiempoMS += ms;
+
+                Historial.append(rs.getString(5) + "\t" + rs.getString(6) + "\n");
+            }
+            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
+                    TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
+                    TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
+            Horas_Totales.setText(nuevoTiempo);
+        } catch (SQLException e) {
+            System.err.print(e.getMessage());
+            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_EntradaActionPerformed
+    }//GEN-LAST:event_ConsultarActionPerformed
 
     private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
         int S;
@@ -1074,88 +1183,151 @@ public class Contenedor extends JFrame {
         }
     }//GEN-LAST:event_SalidaActionPerformed
 
-    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
-        long consulta = 0;
-        ResultSet rs, rs2;
-        Statement stm, stm2;
+    private void EntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntradaActionPerformed
+        int Opt;
         try {
-            consulta = getIDConsulta();
-            ErrorConsulta.setVisible(false);
+            long ent = getIDEntrada();
+            ErrorEntrada.setVisible(false);
         } catch (NumberFormatException | NullPointerException e) {
-            System.err.print(e.getMessage());
-            ErrorConsulta.setVisible(true);
+            ErrorEntrada.setVisible(true);
         }
+        ResultSet rs;
+        Statement stm;
         try {
-            long ms = 0l;
             Connection conn = DriverManager.getConnection(url, user, pass);
             stm = conn.createStatement();
-            stm2 = conn.createStatement();
-            rs = stm.executeQuery("select * from horas" + " where id='" + getIDConsulta() + "'");
-            rs2 = stm2.executeQuery("select nombre from usuario where id='" + getIDConsulta() + "'");
-            Historial.setText("Fecha" + "\t" + "Horas realizadas" + "\n");
-            if (rs2.next()) {
-                Nombre_Consulta.setText(rs2.getString(1));
+            rs = stm.executeQuery("select * from usuario" + " where id='" + getIDEntrada() + "'");
+            if (rs.next()) {
+                Nombre_Entrada.setText(rs.getString(2));
+                Tipo_Entrada.setText(rs.getString(3));
+                Carrera_Entrada.setText(rs.getString(5));
+                java.sql.Blob blob = rs.getBlob(7);
+                InputStream in = blob.getBinaryStream();
+                try {
+                    BufferedImage imag = ImageIO.read(in);
+                    Image image = imag;
+                    ImageIcon icon = new ImageIcon(image);
+                    ImagenEntrada.setIcon(icon);
+                } catch (IOException ex) {
+                    Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Opt = JOptionPane.showConfirmDialog(new PopUp(), "Entrada de: " + Nombre_Entrada.getText(), "Entrada", JOptionPane.YES_OPTION); //Si=0, No=1
+                if (Opt == 0) {
+                    String fecha = fecha();
+                    String hora = hora();
+                    Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDEntrada())));
+                    try {
+                        if (!Repetido()) {
+                            String query = "insert into horas (id,fecha,entrada,id_fecha)" + "values (?,?,?,?)";
+                            PreparedStatement stmt = conn.prepareStatement(query);
+                            stmt.setLong(1, getIDEntrada());
+                            stmt.setString(2, fecha);
+                            stmt.setString(3, hora);
+                            stmt.setLong(4, id_fecha);
+                            Hora_Entrada.setText(hora);
+                            stmt.execute();
+                            conn.close();
+                        } else {
+                            String query = "update horas set entrada = ? where id_Fecha='" + id_fecha + "'";
+                            PreparedStatement Stmt = conn.prepareStatement(query);
+                            Stmt.setString(1, hora);
+                            Hora_Entrada.setText(hora);
+                            Stmt.executeUpdate();
+                            conn.close();
+                        }
+                    } catch (SQLException e) {
+                        JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                        JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
+                        d.setLocation(600, 400);
+                        d.setVisible(true);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
             }
-            long tiempoMS = 0l;
-            while (rs.next()) {
-                String tiempo = rs.getString(6);
-                long horas, minutos, segundos;
-                segundos = Long.parseLong(tiempo.substring(6));
-                minutos = Long.parseLong(tiempo.substring(3, 5));
-                horas = Long.parseLong(tiempo.substring(0, 2));
-                ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
-                tiempoMS += ms;
-
-                Historial.append(rs.getString(5) + "\t" + rs.getString(6) + "\n");
-            }
-            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
-                    TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
-                    TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
-            Horas_Totales.setText(nuevoTiempo);
-        } catch (SQLException e) {
-            System.err.print(e.getMessage());
-            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_ConsultarActionPerformed
-
-    private void ConsultarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarFechaActionPerformed
-        String fechaI = getFechaI();
-        String fechaF = getFechaF();
-        if (fechaI.isEmpty()) {
-            JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
-        }
-        if (fechaF.isEmpty()) {
-            JOptionPane.showMessageDialog(new PopUp(), "Error en las fechas", "Estos campos deben de estar llenos", JOptionPane.WARNING_MESSAGE);
-        }
-        try {
-            long ms, tiempoMS = 0;
-            ResultSet rs;
-            Statement stm;
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            stm = conn.createStatement();
-            rs = stm.executeQuery("select * from horas where fecha>='" + fechaI + "' && fecha<='" + fechaF + "'");
-            while (rs.next()) {
-                String tiempo = rs.getString(6);
-                long horas, minutos, segundos;
-                segundos = Long.parseLong(tiempo.substring(6));
-                minutos = Long.parseLong(tiempo.substring(3, 5));
-                horas = Long.parseLong(tiempo.substring(0, 2));
-                ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
-                tiempoMS += ms;
-            }
-            String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
-                    TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
-                    TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
-            Horas_Fecha.setText(nuevoTiempo);
-
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
         }
+    }//GEN-LAST:event_EntradaActionPerformed
 
-    }//GEN-LAST:event_ConsultarFechaActionPerformed
+    private void BajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaActionPerformed
+        int Opt;
+        try {
+            long baja = getIDBaja();
+            ErrorBaja.setVisible(false);
+        } catch (NumberFormatException | NullPointerException e) {
+            ErrorBaja.setVisible(true);
+        }
+        ResultSet rs;
+        Statement stm;
+        try {
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select * from usuario" + " where id='" + getIDBaja() + "'");
+            if (rs.next()) {
+                Nombre_Baja.setText(rs.getString(2));
+                Tipo_Baja.setText(rs.getString(3));
+                Telefono_Baja.setText(rs.getString(5));
+                Carrera_Baja.setText(rs.getString(4));
+                Correo_Baja.setText(rs.getString(6));
+                java.sql.Blob blob = rs.getBlob(7);
+                InputStream in = blob.getBinaryStream();
+                try {
+                    BufferedImage imag = ImageIO.read(in);
+                    Image image = imag;
+                    ImageIcon icon = new ImageIcon(image);
+                    imagen.setIcon(icon);
+                } catch (IOException ex) {
+                    Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Opt = JOptionPane.showConfirmDialog(new PopUp(), "Dar de baja: " + Nombre_Baja.getText(), "Eliminar Usuario", JOptionPane.YES_OPTION);
+                //Si=0, No=1
+                if (Opt == 0) {
+                    JPasswordField pf = new JPasswordField();
+                    int pasw = JOptionPane.showConfirmDialog(new PopUp(), pf, "Ingrese la contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                    if (pasw == JOptionPane.OK_OPTION) {
+                        String admin = new String(pf.getPassword());
+                        if (admin.equals("hola")) {
+                            String query = "delete from usuario where id='" + getIDBaja() + "'";
+                            String query2 = "delete from horas where id='" + getIDBaja() + "'";
+                            PreparedStatement Stmt = conn.prepareStatement(query);
+                            PreparedStatement Stmt2 = conn.prepareStatement(query2);
+                            Stmt.executeUpdate();
+                            Stmt2.executeUpdate();
+                            conn.close();
+                            JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.OK_OPTION);
+                        } else {
+                            JOptionPane.showMessageDialog(new PopUp(), "Se notificará al personal de este incidente", "Contraseña incorrecta", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
+            d.setLocation(600, 400);
+            d.setVisible(true);
+        }
+    }//GEN-LAST:event_BajaActionPerformed
+
+    private void TomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomarFotoActionPerformed
+        try {
+            BufferedImage image = webcam.getImage();
+            //nombre y formato de la imagen de salida
+            ImageIO.write(image, "JPG", new File("usuario.jpg"));
+            JOptionPane pane = new JOptionPane("Se ha tomado la foto", JOptionPane.INFORMATION_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Exito");
+            d.setLocation(600, 400);
+            d.setVisible(true);
+        } catch (IOException ex) {
+            //Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TomarFotoActionPerformed
 
     private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
         int conf = 3;
@@ -1213,19 +1385,91 @@ public class Contenedor extends JFrame {
         }
     }//GEN-LAST:event_AltaActionPerformed
 
-    private void TomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomarFotoActionPerformed
+    private void RegistrarEXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarEXActionPerformed
+        ErrorIDEX.setVisible(false);
+        ResultSet rs;
+        Statement stm2;
+        String dif = "";
         try {
-            BufferedImage image = webcam.getImage();
-            //nombre y formato de la imagen de salida
-            ImageIO.write(image, "JPG", new File("usuario.jpg"));
-            JOptionPane pane = new JOptionPane("Se ha tomado la foto", JOptionPane.INFORMATION_MESSAGE);
-            JDialog d = pane.createDialog(new JFrame(), "Exito");
+            long ID = Long.parseLong(ID_EX.getText());
+        } catch (NumberFormatException | NullPointerException e) {
+            ErrorIDEX.setVisible(true);
+            JOptionPane pane = new JOptionPane("Algo anda mal", JOptionPane.ERROR_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Datos erroneos");
             d.setLocation(600, 400);
             d.setVisible(true);
-        } catch (IOException ex) {
-            //Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_TomarFotoActionPerformed
+        try {
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            stm2 = conn.createStatement();
+            String query = "insert into horas (id_Fecha, id, Entrada, Salida, Fecha, horas) values (?,?,?,?,?,?)";
+            //insert into horas (id_Fecha, id, Entrada, Salida, Fecha, horas) values ('20191106192081','192081','4:12:30','5:05:20','2019/11/06', (select timediff("5:05:20","4:12:30")))
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String hora_entrada = "";
+            Long ID = Long.parseLong(ID_EX.getText());
+            Long IDF = Long.parseLong(Fecha_EX.getText().replace("/", "").concat(ID_EX.getText()));
+            String fecha = Fecha_EX.getText();
+            if (HorasEXE.getText().isEmpty()) {
+                hora_entrada += "00:";
+            } else {
+                int i = Integer.parseInt(HorasEXE.getText());
+                if (i > 12) {
+                    HorasE.setBackground(Color.red);
+                    JOptionPane pane = new JOptionPane("Usa formato de 12 horas", JOptionPane.WARNING_MESSAGE);
+                    JDialog d = pane.createDialog(new JFrame(), "Error");
+                    d.setLocation(600, 400);
+                    d.setVisible(true);
+                } else {
+                    hora_entrada += HorasEXE.getText() + ":";
+                }
+            }
+            if (MinutosEXE.getText().isEmpty()) {
+                hora_entrada += "00:00";
+            } else {
+                hora_entrada += MinutosEXE.getText() + ":00";
+            }
+            String hora_salida = "";
+            if (HorasEXS.getText().isEmpty()) {
+                hora_salida += "00:";
+            } else {
+                hora_salida += HorasEXS.getText() + ":";
+            }
+            if (MinutosEXS.getText().isEmpty()) {
+                hora_salida += "00:00";
+            } else {
+                hora_salida += MinutosEXS.getText() + ":00";
+            }
+            rs = stm2.executeQuery("select timediff('" + hora_salida + "','" + hora_entrada + "')");
+            if (rs.next()) {
+                dif = rs.getString(1);
+            }
+            stmt.setLong(1, IDF);
+            stmt.setLong(2, ID);
+            stmt.setString(3, hora_entrada);
+            stmt.setString(4, hora_salida);
+            stmt.setString(5, fecha);
+            stmt.setString(6, dif);
+            stmt.execute();
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
+            d.setLocation(600, 400);
+            d.setVisible(true);
+        }
+    }//GEN-LAST:event_RegistrarEXActionPerformed
+
+    private void Tab2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Tab2FocusGained
+        if (Tab2.getSelectedIndex() == 0) {
+            ID_Entrada.requestFocusInWindow();
+        }
+        if (Tab2.getSelectedIndex() == 1) {
+            ID_Salida.requestFocusInWindow();
+        }
+        if (Tab2.getSelectedIndex() == 2) {
+            ID_EX.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_Tab2FocusGained
 
     //Obtener todos los datos y verificar la informacion ingresada
     public void Valores() {
@@ -1251,7 +1495,7 @@ public class Contenedor extends JFrame {
         } catch (NumberFormatException | NullPointerException e) {
             ErrorTelefono.setVisible(true);
         }
-        if (Nombre.isEmpty() ) {
+        if (Nombre.isEmpty()) {
             ErrorNombre.setVisible(true);
         }
 
@@ -1485,41 +1729,7 @@ public class Contenedor extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Contenedor.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Contenedor().setVisible(true);
@@ -1546,35 +1756,54 @@ public class Contenedor extends JFrame {
     private javax.swing.JLabel ErrorConsulta;
     private javax.swing.JLabel ErrorEntrada;
     private javax.swing.JLabel ErrorID;
+    private javax.swing.JLabel ErrorIDEX;
     private javax.swing.JLabel ErrorNombre;
     private javax.swing.JLabel ErrorSalida;
     private javax.swing.JLabel ErrorTelefono;
     private javax.swing.JLabel ErrorTipo;
+    private javax.swing.JTextField Fecha_EX;
     private javax.swing.JTextField Fecha_Final;
     private javax.swing.JTextField Fecha_Inicial;
     private javax.swing.JTextField FieldOP;
     private javax.swing.JTextArea Historial;
     private javax.swing.JTextField Hora_Entrada;
     private javax.swing.JTextField Hora_Salida;
+    private javax.swing.JLabel HorasE;
+    private javax.swing.JTextField HorasEXE;
+    private javax.swing.JTextField HorasEXS;
+    private javax.swing.JLabel HorasS;
     private javax.swing.JTextField Horas_Fecha;
     private javax.swing.JTextField Horas_Totales;
     private javax.swing.JTextField ID_Baja;
     private javax.swing.JTextField ID_Consulta;
+    private javax.swing.JTextField ID_EX;
     private javax.swing.JTextField ID_Entrada;
     private javax.swing.JTextField ID_Salida;
     private javax.swing.JTextField ID_Usuario;
+    private javax.swing.JLabel ImagenEX;
     private javax.swing.JLabel ImagenEntrada;
     private javax.swing.JLabel ImagenSalida;
     private javax.swing.JLabel JLabel25;
+    private javax.swing.JLabel MinutosE;
+    private javax.swing.JTextField MinutosEXE;
+    private javax.swing.JTextField MinutosEXS;
+    private javax.swing.JLabel MinutosS;
     private javax.swing.JTextField Nombre_Baja;
     private javax.swing.JTextField Nombre_Consulta;
     private javax.swing.JTextField Nombre_Entrada;
     private javax.swing.JTextField Nombre_Salida;
     private javax.swing.JTextField Nombre_Usuario;
+    private javax.swing.JPanel PanelEntrada;
+    private javax.swing.JPanel PanelExtemporaneo;
+    private javax.swing.JPanel PanelSalida;
+    private javax.swing.JButton RegistrarEX;
     private javax.swing.JButton Salida;
+    private javax.swing.JTabbedPane Tab1;
+    private javax.swing.JTabbedPane Tab2;
     private javax.swing.JPanel TabAlta;
     private javax.swing.JPanel TabBaja;
     private javax.swing.JPanel TabConsulta;
+    private javax.swing.JPanel TabHoras;
     private javax.swing.JTextField Telefono_Baja;
     private javax.swing.JTextField Telefono_Usuario;
     private javax.swing.JLabel Test;
@@ -1608,19 +1837,21 @@ public class Contenedor extends JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel labelOP;
     // End of variables declaration//GEN-END:variables
 }
