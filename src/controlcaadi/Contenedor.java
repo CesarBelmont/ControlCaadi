@@ -1,4 +1,5 @@
 package controlcaadi;
+
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -24,7 +25,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPasswordField;
-import javax.swing.UIManager;
 
 /**
  *
@@ -58,6 +58,8 @@ public class Contenedor extends JFrame {
         ErrorConsulta.setVisible(false);
         ErrorBaja.setVisible(false);
         ErrorIDEX.setVisible(false);
+        Error_Entrada.setVisible(false);
+        Error_Salida.setVisible(false);
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         panel = new WebcamPanel(webcam, false);
         panel.setPreferredSize(webcam.getViewSize());
@@ -65,7 +67,9 @@ public class Contenedor extends JFrame {
         panel.setBackground(Color.BLACK);
         panel.setBounds(0, 0, 400, 300);
         Camara.add(panel);
-
+        Date_EX.getEditor().setEditable(false);
+        Fecha_Inicial.getEditor().setEditable(false);
+        Fecha_Final.getEditor().setEditable(false);
         if (initialized.compareAndSet(false, true)) {
             executor.execute(new Runnable() {
                 @Override
@@ -73,11 +77,6 @@ public class Contenedor extends JFrame {
                     panel.start();
                 }
             });
-        }
-        try{
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-        }catch(Exception e){
-            
         }
 
     }
@@ -112,6 +111,7 @@ public class Contenedor extends JFrame {
         ErrorTipo = new javax.swing.JLabel();
         Camara = new javax.swing.JLayeredPane();
         TomarFoto = new javax.swing.JButton();
+        foto = new javax.swing.JLabel();
         TabBaja = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         ID_Baja = new javax.swing.JTextField();
@@ -162,8 +162,6 @@ public class Contenedor extends JFrame {
         jLabel31 = new javax.swing.JLabel();
         ID_EX = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        Fecha_EX = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         RegistrarEX = new javax.swing.JButton();
         HorasEXE = new javax.swing.JTextField();
@@ -179,6 +177,9 @@ public class Contenedor extends JFrame {
         ImagenEX = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         ErrorIDEX = new javax.swing.JLabel();
+        Date_EX = new org.jdesktop.swingx.JXDatePicker();
+        Error_Entrada = new javax.swing.JLabel();
+        Error_Salida = new javax.swing.JLabel();
         TabConsulta = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         ID_Consulta = new javax.swing.JTextField();
@@ -192,15 +193,13 @@ public class Contenedor extends JFrame {
         jLabel25 = new javax.swing.JLabel();
         ConsultarFecha = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
-        Fecha_Inicial = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        Fecha_Final = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         Horas_Fecha = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Historial = new javax.swing.JTextArea();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        Fecha_Inicial = new org.jdesktop.swingx.JXDatePicker();
+        Fecha_Final = new org.jdesktop.swingx.JXDatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
@@ -264,7 +263,7 @@ public class Contenedor extends JFrame {
         Camara.setLayout(CamaraLayout);
         CamaraLayout.setHorizontalGroup(
             CamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         CamaraLayout.setVerticalGroup(
             CamaraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,63 +277,64 @@ public class Contenedor extends JFrame {
             }
         });
 
+        foto.setMaximumSize(new java.awt.Dimension(0, 0));
+        foto.setPreferredSize(new java.awt.Dimension(410, 350));
+
         javax.swing.GroupLayout TabAltaLayout = new javax.swing.GroupLayout(TabAlta);
         TabAlta.setLayout(TabAltaLayout);
         TabAltaLayout.setHorizontalGroup(
             TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabAltaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TabAltaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(TabAltaLayout.createSequentialGroup()
-                        .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(TabAltaLayout.createSequentialGroup()
-                                .addComponent(Usuario_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ErrorTipo))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addGroup(TabAltaLayout.createSequentialGroup()
-                                .addComponent(Nombre_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ErrorNombre))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addGroup(TabAltaLayout.createSequentialGroup()
-                                .addComponent(ID_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ErrorID, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(TabAltaLayout.createSequentialGroup()
-                                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(TabAltaLayout.createSequentialGroup()
-                                        .addComponent(Carrera_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Alta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ErrorCarrera))))
-                                .addGap(18, 18, 18)
-                                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelOP)
-                                    .addGroup(TabAltaLayout.createSequentialGroup()
-                                        .addComponent(FieldOP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ErrorCarreraOP))))
-                            .addGroup(TabAltaLayout.createSequentialGroup()
-                                .addComponent(Telefono_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(Camara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabAltaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TomarFoto)
                 .addGap(190, 190, 190))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabAltaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TabAltaLayout.createSequentialGroup()
+                        .addComponent(Usuario_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ErrorTipo))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addGroup(TabAltaLayout.createSequentialGroup()
+                        .addComponent(Nombre_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ErrorNombre))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addGroup(TabAltaLayout.createSequentialGroup()
+                        .addComponent(ID_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ErrorID, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TabAltaLayout.createSequentialGroup()
+                        .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(TabAltaLayout.createSequentialGroup()
+                                .addComponent(Carrera_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Alta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ErrorCarrera))))
+                        .addGap(18, 18, 18)
+                        .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelOP)
+                            .addGroup(TabAltaLayout.createSequentialGroup()
+                                .addComponent(FieldOP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ErrorCarreraOP))))
+                    .addGroup(TabAltaLayout.createSequentialGroup()
+                        .addComponent(Telefono_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Correo_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Camara)
+                    .addComponent(foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         TabAltaLayout.setVerticalGroup(
             TabAltaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +381,7 @@ public class Contenedor extends JFrame {
                             .addComponent(ErrorCarreraOP))
                         .addGap(59, 59, 59)
                         .addComponent(Alta)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 106, Short.MAX_VALUE))
                     .addGroup(TabAltaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Test)))
@@ -391,6 +391,8 @@ public class Contenedor extends JFrame {
                 .addComponent(Camara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TomarFoto)
+                .addGap(61, 61, 61)
+                .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -491,7 +493,7 @@ public class Contenedor extends JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Correo_Baja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 202, Short.MAX_VALUE))
+                        .addGap(0, 308, Short.MAX_VALUE))
                     .addGroup(TabBajaLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -598,7 +600,7 @@ public class Contenedor extends JFrame {
                         .addComponent(Hora_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Entrada)
-                        .addGap(0, 295, Short.MAX_VALUE))
+                        .addGap(0, 401, Short.MAX_VALUE))
                     .addComponent(ImagenEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -690,7 +692,7 @@ public class Contenedor extends JFrame {
                         .addComponent(Hora_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Salida)
-                        .addGap(0, 293, Short.MAX_VALUE))
+                        .addGap(0, 399, Short.MAX_VALUE))
                     .addComponent(ImagenSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -701,10 +703,7 @@ public class Contenedor extends JFrame {
 
         jLabel32.setText("Fecha");
 
-        jLabel33.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel33.setText("aaaa/mm/dd");
-
-        jLabel34.setText("Hora Entrada");
+        jLabel34.setText("Hora Entrada (En formato de 24 horas)");
 
         RegistrarEX.setText("Registrar tiempo");
         RegistrarEX.addActionListener(new java.awt.event.ActionListener() {
@@ -723,7 +722,7 @@ public class Contenedor extends JFrame {
 
         MinutosS.setText("Minutos");
 
-        jLabel35.setText("Hora Salida");
+        jLabel35.setText("Hora Salida (En formato de 24 horas)");
 
         ImagenEX.setText("   ");
 
@@ -732,6 +731,18 @@ public class Contenedor extends JFrame {
         ErrorIDEX.setForeground(java.awt.Color.red);
         ErrorIDEX.setText("Verifica esta informacion");
 
+        Date_EX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Date_EXActionPerformed(evt);
+            }
+        });
+
+        Error_Entrada.setForeground(java.awt.Color.red);
+        Error_Entrada.setText("Verifica esta informacion");
+
+        Error_Salida.setForeground(java.awt.Color.red);
+        Error_Salida.setText("Verifica esta informacion");
+
         javax.swing.GroupLayout PanelExtemporaneoLayout = new javax.swing.GroupLayout(PanelExtemporaneo);
         PanelExtemporaneo.setLayout(PanelExtemporaneoLayout);
         PanelExtemporaneoLayout.setHorizontalGroup(
@@ -739,44 +750,43 @@ public class Contenedor extends JFrame {
             .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Date_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegistrarEX)
                     .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                        .addComponent(Fecha_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                .addComponent(HorasS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(MinutosS))
+                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                                .addComponent(HorasEXS, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)
+                                .addComponent(MinutosEXS)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                        .addComponent(Error_Salida))
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35)
                     .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegistrarEX)
-                            .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                                    .addComponent(HorasS)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                    .addComponent(MinutosS))
-                                .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                                    .addComponent(HorasEXS, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(13, 13, 13)
-                                    .addComponent(MinutosEXS)))
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel35)
-                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                                .addComponent(ID_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ErrorIDEX))
-                            .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
-                                .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(HorasE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                                    .addComponent(HorasEXE, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(MinutosE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(MinutosEXE, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ID_EX, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ErrorIDEX))
+                    .addGroup(PanelExtemporaneoLayout.createSequentialGroup()
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(HorasE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                            .addComponent(HorasEXE, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MinutosE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MinutosEXE, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Error_Entrada)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(ImagenEX, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131))
         );
@@ -794,9 +804,7 @@ public class Contenedor extends JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Fecha_EX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33))
+                        .addComponent(Date_EX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -807,7 +815,8 @@ public class Contenedor extends JFrame {
                         .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(HorasEXE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MinutosEXE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Error_Entrada))
                         .addGap(24, 24, 24)
                         .addComponent(jLabel35)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -818,10 +827,11 @@ public class Contenedor extends JFrame {
                         .addGroup(PanelExtemporaneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(HorasEXS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MinutosEXS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Error_Salida))
                         .addGap(30, 30, 30)
                         .addComponent(RegistrarEX)
-                        .addGap(0, 286, Short.MAX_VALUE))
+                        .addGap(0, 390, Short.MAX_VALUE))
                     .addComponent(ImagenEX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -884,11 +894,17 @@ public class Contenedor extends JFrame {
         Historial.setRows(5);
         jScrollPane1.setViewportView(Historial);
 
-        jLabel29.setForeground(java.awt.Color.red);
-        jLabel29.setText("aaaa/mm/dd");
+        Fecha_Inicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fecha_InicialActionPerformed(evt);
+            }
+        });
 
-        jLabel30.setForeground(java.awt.Color.red);
-        jLabel30.setText("aaaa/mm/dd");
+        Fecha_Final.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fecha_FinalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TabConsultaLayout = new javax.swing.GroupLayout(TabConsulta);
         TabConsulta.setLayout(TabConsultaLayout);
@@ -917,7 +933,7 @@ public class Contenedor extends JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ErrorConsulta))
                             .addComponent(Consultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(109, 442, Short.MAX_VALUE)))
+                        .addGap(109, 411, Short.MAX_VALUE)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TabConsultaLayout.createSequentialGroup()
@@ -931,15 +947,10 @@ public class Contenedor extends JFrame {
                         .addComponent(jLabel28))
                     .addGroup(TabConsultaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Horas_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Fecha_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Fecha_Inicial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Horas_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(Fecha_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Fecha_Final, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(TabConsultaLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(ConsultarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -967,23 +978,19 @@ public class Contenedor extends JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Consultar)
                         .addContainerGap())
                     .addComponent(jSeparator2)
                     .addGroup(TabConsultaLayout.createSequentialGroup()
                         .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Fecha_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29))
+                        .addGap(9, 9, 9)
+                        .addComponent(Fecha_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Fecha_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30))
+                        .addComponent(Fecha_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1005,9 +1012,7 @@ public class Contenedor extends JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Tab1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Tab1)
         );
 
         pack();
@@ -1042,9 +1047,8 @@ public class Contenedor extends JFrame {
                     TimeUnit.MILLISECONDS.toMinutes(tiempoMS) % TimeUnit.HOURS.toMinutes(1),
                     TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
             Horas_Fecha.setText(nuevoTiempo);
-
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1076,10 +1080,8 @@ public class Contenedor extends JFrame {
                     horas = Long.parseLong(tiempo.substring(0, 2));
                     ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
                     tiempoMS += ms;
-
                     Historial.append(rs.getString(5) + "\t" + rs.getString(6) + "\n");
                 } catch (NullPointerException e) {
-
                 }
             }
             String nuevoTiempo = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(tiempoMS),
@@ -1087,8 +1089,7 @@ public class Contenedor extends JFrame {
                     TimeUnit.MILLISECONDS.toSeconds(tiempoMS) % TimeUnit.MINUTES.toSeconds(1));
             Horas_Totales.setText(nuevoTiempo);
         } catch (SQLException e) {
-            System.err.print(e.getMessage());
-            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(new PopUp(), "Kabooooooooom", e.getMessage(), JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_ConsultarActionPerformed
 
@@ -1119,7 +1120,7 @@ public class Contenedor extends JFrame {
                 if (S == 0) {
                     java.util.Date fecha = new java.util.Date();
                     java.sql.Timestamp horaSQL = new java.sql.Timestamp(fecha.getTime());
-                    SimpleDateFormat horaFormato = new SimpleDateFormat("hh:mm:ss");
+                    SimpleDateFormat horaFormato = new SimpleDateFormat("HH:mm:ss");
                     String horaS = horaFormato.format(horaSQL);
                     Long id_fecha = Long.parseLong(fecha().replace("/", "").concat(Long.toString(getIDSalida())));
                     try {
@@ -1173,7 +1174,7 @@ public class Contenedor extends JFrame {
                             ImagenSalida.setIcon(null);
                         }
                     } catch (SQLException e) {
-                        JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
                         JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
                         d.setLocation(600, 400);
                         d.setVisible(true);
@@ -1186,7 +1187,7 @@ public class Contenedor extends JFrame {
                 d.setVisible(true);
             }
         } catch (SQLException ex) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1255,7 +1256,7 @@ public class Contenedor extends JFrame {
                             Hora_Entrada.setText("");
                         }
                     } catch (SQLException e) {
-                        JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
                         JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
                         d.setLocation(600, 400);
                         d.setVisible(true);
@@ -1265,7 +1266,7 @@ public class Contenedor extends JFrame {
                 JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Algo salio mal", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException ex) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1303,7 +1304,7 @@ public class Contenedor extends JFrame {
                     int pasw = JOptionPane.showConfirmDialog(new PopUp(), pf, "Ingrese la contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (pasw == JOptionPane.OK_OPTION) {
                         String admin = new String(pf.getPassword());
-                        if (admin.equals("hola")) {
+                        if (admin.equals("Kdi2020")) {
                             String query = "delete from usuario where id='" + getIDBaja() + "'";
                             String query2 = "delete from horas where id='" + getIDBaja() + "'";
                             PreparedStatement Stmt = conn.prepareStatement(query);
@@ -1321,6 +1322,13 @@ public class Contenedor extends JFrame {
                             JOptionPane.showMessageDialog(new PopUp(), "Se ha eliminado al usuario", "Baja realizada", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(new PopUp(), "Se notificará al personal de este incidente", "Contraseña incorrecta", JOptionPane.WARNING_MESSAGE);
+                            ID_Baja.setText("");
+                            Nombre_Baja.setText("");
+                            Tipo_Baja.setText("");
+                            Telefono_Baja.setText("");
+                            Carrera_Baja.setText("");
+                            Correo_Baja.setText("");
+                            imagen.setIcon(null);
                         }
                     }
                 }
@@ -1328,7 +1336,7 @@ public class Contenedor extends JFrame {
                 JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException ex) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1347,6 +1355,8 @@ public class Contenedor extends JFrame {
         } catch (IOException ex) {
 
         }
+        ImageIcon img = new ImageIcon("../ControlCaadi/usuario.jpg");
+        foto.setIcon(img);
     }//GEN-LAST:event_TomarFotoActionPerformed
 
     private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
@@ -1374,7 +1384,7 @@ public class Contenedor extends JFrame {
             int pasw = JOptionPane.showConfirmDialog(new PopUp(), pf, "Ingrese la contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
             if (pasw == JOptionPane.OK_OPTION) {
                 String admin = new String(pf.getPassword());
-                if (admin.equals("hola")) {
+                if (admin.equals("Kdi2020")) {
                     try {
                         Connection conn = DriverManager.getConnection(url, user, pass);
                         String query = "insert into usuario (id, Nombre, Tipo, Telefono,Carrera,Correo,Imagen)" + "values (?,?,?,?,?,?,?)";
@@ -1402,8 +1412,9 @@ public class Contenedor extends JFrame {
                         labelOP.setVisible(false);
                         FieldOP.setVisible(false);
                         ErrorCarreraOP.setVisible(false);
+                        foto.setIcon(null);
                     } catch (SQLException e) {
-                        JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
                         JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
                         d.setLocation(600, 400);
                         d.setVisible(true);
@@ -1413,6 +1424,16 @@ public class Contenedor extends JFrame {
                     JDialog d = pane.createDialog(new JFrame(), "Se notificará al personal de este incidente");
                     d.setLocation(600, 400);
                     d.setVisible(true);
+                    ID_Usuario.setText("");
+                    Nombre_Usuario.setText("");
+                    Usuario_Tipo.setSelectedIndex(0);
+                    Telefono_Usuario.setText("");
+                    Correo_Usuario.setText("");
+                    Carrera_Usuario.setSelectedIndex(0);
+                    labelOP.setVisible(false);
+                    FieldOP.setVisible(false);
+                    ErrorCarreraOP.setVisible(false);
+                    foto.setIcon(null);
                 }
             }
         }
@@ -1422,6 +1443,8 @@ public class Contenedor extends JFrame {
 
     private void RegistrarEXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarEXActionPerformed
         ErrorIDEX.setVisible(false);
+        Error_Entrada.setVisible(false);
+        Error_Salida.setVisible(false);
         ResultSet rs, rs2;
         Statement stm, stm2;
         String dif = "";
@@ -1455,19 +1478,20 @@ public class Contenedor extends JFrame {
                     int pasw = JOptionPane.showConfirmDialog(new PopUp(), pf, "Ingrese la contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (pasw == JOptionPane.OK_OPTION) {
                         String admin = new String(pf.getPassword());
-                        if (admin.equals("hola")) {
+                        if (admin.equals("Kdi2020")) {
                             String hora_entrada = "";
                             String hora_salida = "";
+                            SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+                            String fecha = formater.format(Date_EX.getDate());
                             Long ID = Long.parseLong(ID_EX.getText());
-                            Long IDF = Long.parseLong(Fecha_EX.getText().replace("/", "").concat(ID_EX.getText()));
-                            String fecha = Fecha_EX.getText();
+                            Long IDF = Long.parseLong(fecha.replace("/", "").concat(ID_EX.getText()));
                             if (HorasEXE.getText().isEmpty()) {
                                 hora_entrada += "00:";
                             } else {
                                 int i = Integer.parseInt(HorasEXE.getText());
-                                if (i > 12) {
-                                    HorasE.setBackground(Color.red);
-                                    JOptionPane pane = new JOptionPane("Usa formato de 12 horas", JOptionPane.WARNING_MESSAGE);
+                                if (i > 24) {
+                                    Error_Entrada.setVisible(true);
+                                    JOptionPane pane = new JOptionPane("No hay mas de 24 horas al dia ", JOptionPane.WARNING_MESSAGE);
                                     JDialog d = pane.createDialog(new JFrame(), "Error");
                                     d.setLocation(600, 400);
                                     d.setVisible(true);
@@ -1478,18 +1502,44 @@ public class Contenedor extends JFrame {
                             if (MinutosEXE.getText().isEmpty()) {
                                 hora_entrada += "00:00";
                             } else {
-                                hora_entrada += MinutosEXE.getText() + ":00";
+                                int i = Integer.parseInt(MinutosEXE.getText());
+                                if (i >= 60) {
+                                    Error_Entrada.setVisible(true);
+                                    JOptionPane pane = new JOptionPane("Minutos deben ser menores a 60", JOptionPane.WARNING_MESSAGE);
+                                    JDialog d = pane.createDialog(new JFrame(), "Error");
+                                    d.setLocation(600, 400);
+                                    d.setVisible(true);
+                                } else {
+                                    hora_entrada += MinutosEXE.getText() + ":00";
+                                }
                             }
-
                             if (HorasEXS.getText().isEmpty()) {
                                 hora_salida += "00:";
                             } else {
-                                hora_salida += HorasEXS.getText() + ":";
+                                int i = Integer.parseInt(HorasEXS.getText());
+                                if (i > 24) {
+                                    Error_Salida.setVisible(true);
+                                    JOptionPane pane = new JOptionPane("No hay mas de 24 horas al dia", JOptionPane.WARNING_MESSAGE);
+                                    JDialog d = pane.createDialog(new JFrame(), "Error");
+                                    d.setLocation(600, 400);
+                                    d.setVisible(true);
+                                } else {
+                                    hora_salida += HorasEXS.getText() + ":";
+                                }
                             }
                             if (MinutosEXS.getText().isEmpty()) {
                                 hora_salida += "00:00";
                             } else {
-                                hora_salida += MinutosEXS.getText() + ":00";
+                                int i = Integer.parseInt(MinutosEXS.getText());
+                                if (i >= 60) {
+                                    Error_Salida.setVisible(true);
+                                    JOptionPane pane = new JOptionPane("Minutos deben ser menores a 60", JOptionPane.WARNING_MESSAGE);
+                                    JDialog d = pane.createDialog(new JFrame(), "Error");
+                                    d.setLocation(600, 400);
+                                    d.setVisible(true);
+                                } else {
+                                    hora_salida += MinutosEXS.getText() + ":00";
+                                }
                             }
                             try {
                                 stm2 = conn.createStatement();
@@ -1500,67 +1550,71 @@ public class Contenedor extends JFrame {
                                     if (rs.next()) {
                                         dif = rs.getString(1);
                                     }
-                                    stmt.setLong(1, IDF);
-                                    stmt.setLong(2, ID);
-                                    stmt.setString(3, hora_entrada);
-                                    stmt.setString(4, hora_salida);
-                                    stmt.setString(5, fecha);
-                                    stmt.setString(6, dif);
-                                    stmt.execute();
-                                    JOptionPane.showMessageDialog(new PopUp(), "Exito", "Horas agregadas", JOptionPane.INFORMATION_MESSAGE);
-                                    conn.close();
-                                    ID_EX.setText("");
-                                    Fecha_EX.setText("");
-                                    HorasEXE.setText("");
-                                    MinutosEXE.setText("");
-                                    HorasEXS.setText("");
-                                    MinutosEXS.setText("");
-                                    ImagenEX.setIcon(null);
+                                    if (!Error_Salida.isVisible() || !Error_Entrada.isVisible()) {
+                                        stmt.setLong(1, IDF);
+                                        stmt.setLong(2, ID);
+                                        stmt.setString(3, hora_entrada);
+                                        stmt.setString(4, hora_salida);
+                                        stmt.setString(5, fecha);
+                                        stmt.setString(6, dif);
+                                        stmt.execute();
+                                        JOptionPane.showMessageDialog(new PopUp(), "Exito", "Horas agregadas", JOptionPane.INFORMATION_MESSAGE);
+                                        conn.close();
+                                        ID_EX.setText("");
+                                        Date_EX.setDate(null);
+                                        HorasEXE.setText("");
+                                        MinutosEXE.setText("");
+                                        HorasEXS.setText("");
+                                        MinutosEXS.setText("");
+                                        ImagenEX.setIcon(null);
+                                    }
                                 } else {
                                     Statement stmtent = conn.createStatement();
                                     ResultSet rsent = stmtent.executeQuery("select entrada from horas where id_Fecha='" + IDF + "'");
                                     if (rsent.next()) {
                                         String entrada = rsent.getString(1);
                                         if (entrada != null) {
-                                            String qsalida = "update horas set salida=?, horas = ? where id_Fecha='" + IDF + "'";
-                                            PreparedStatement stmt = conn.prepareStatement(qsalida);
-                                            stmt.setString(1, hora_salida);
-                                            stmt.setString(2, timediff(IDF, hora_salida));
-                                            stmt.execute();
-                                            conn.close();
-                                            JOptionPane.showMessageDialog(new PopUp(), "Exito", "Se agrego la salida", JOptionPane.INFORMATION_MESSAGE);
-                                            ID_EX.setText("");
-                                            Fecha_EX.setText("");
-                                            HorasEXE.setText("");
-                                            MinutosEXE.setText("");
-                                            HorasEXS.setText("");
-                                            MinutosEXS.setText("");
-                                            ImagenEX.setIcon(null);
+                                            if (!Error_Salida.isVisible() || !Error_Entrada.isVisible()) {
+                                                String qsalida = "update horas set salida=?, horas = ? where id_Fecha='" + IDF + "'";
+                                                PreparedStatement stmt = conn.prepareStatement(qsalida);
+                                                stmt.setString(1, hora_salida);
+                                                stmt.setString(2, timediff(IDF, hora_salida));
+                                                stmt.execute();
+                                                conn.close();
+                                                JOptionPane.showMessageDialog(new PopUp(), "Exito", "Se agrego la salida", JOptionPane.INFORMATION_MESSAGE);
+                                                ID_EX.setText("");
+                                                Date_EX.setDate(null);
+                                                HorasEXE.setText("");
+                                                MinutosEXE.setText("");
+                                                HorasEXS.setText("");
+                                                MinutosEXS.setText("");
+                                                ImagenEX.setIcon(null);
+                                            }
                                         } else {
-                                            String qsalida = "update horas set entrada= ? , horas = ? where id_Fecha='" + IDF + "'";
-                                            PreparedStatement stmt = conn.prepareStatement(qsalida);
-                                            stmt.setString(1, hora_entrada);
-                                            stmt.setString(2, timediffE(IDF, hora_entrada));
-                                            stmt.execute();
-                                            conn.close();
-                                            JOptionPane.showMessageDialog(new PopUp(), "Exito", "Se agrego la entrada", JOptionPane.INFORMATION_MESSAGE);
-                                            ID_EX.setText("");
-                                            Fecha_EX.setText("");
-                                            HorasEXE.setText("");
-                                            MinutosEXE.setText("");
-                                            HorasEXS.setText("");
-                                            MinutosEXS.setText("");
-                                            ImagenEX.setIcon(null);
+                                            if (!Error_Salida.isVisible() || !Error_Entrada.isVisible()) {
+                                                String qsalida = "update horas set entrada= ? , horas = ? where id_Fecha='" + IDF + "'";
+                                                PreparedStatement stmt = conn.prepareStatement(qsalida);
+                                                stmt.setString(1, hora_entrada);
+                                                stmt.setString(2, timediffE(IDF, hora_entrada));
+                                                stmt.execute();
+                                                conn.close();
+                                                JOptionPane.showMessageDialog(new PopUp(), "Exito", "Se agrego la entrada", JOptionPane.INFORMATION_MESSAGE);
+                                                ID_EX.setText("");
+                                                Date_EX.setDate(null);
+                                                HorasEXE.setText("");
+                                                MinutosEXE.setText("");
+                                                HorasEXS.setText("");
+                                                MinutosEXS.setText("");
+                                                ImagenEX.setIcon(null);
+                                            }
                                         }
                                     }
-
                                 }
                             } catch (SQLException e) {
-                                JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
                                 JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
                                 d.setLocation(600, 400);
                                 d.setVisible(true);
-                                System.err.print(e.getMessage());
                             }
                         } else {
                             JOptionPane.showMessageDialog(new PopUp(), "Se notificará al personal de este incidente", "Contraseña incorrecta", JOptionPane.WARNING_MESSAGE);
@@ -1574,7 +1628,7 @@ public class Contenedor extends JFrame {
                 d.setVisible(true);
             }
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1592,6 +1646,24 @@ public class Contenedor extends JFrame {
             ID_EX.requestFocusInWindow();
         }
     }//GEN-LAST:event_Tab2FocusGained
+
+    private void Date_EXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Date_EXActionPerformed
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+        formater.format(Date_EX.getDate());
+        Date_EX.setFormats(formater);
+    }//GEN-LAST:event_Date_EXActionPerformed
+
+    private void Fecha_InicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha_InicialActionPerformed
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+        formater.format(Fecha_Inicial.getDate());
+        Fecha_Inicial.setFormats(formater);
+    }//GEN-LAST:event_Fecha_InicialActionPerformed
+
+    private void Fecha_FinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fecha_FinalActionPerformed
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+        formater.format(Fecha_Final.getDate());
+        Fecha_Final.setFormats(formater);
+    }//GEN-LAST:event_Fecha_FinalActionPerformed
     //Obtener todos los datos y verificar la informacion ingresada
     public void Valores() {
         ErrorID.setVisible(false);
@@ -1619,7 +1691,6 @@ public class Contenedor extends JFrame {
         if (Nombre.isEmpty()) {
             ErrorNombre.setVisible(true);
         }
-
         if ("---Elige una opcion---".equals(opt)) {
             ErrorCarrera.setVisible(true);
         }
@@ -1636,9 +1707,7 @@ public class Contenedor extends JFrame {
                 JOptionPane.showMessageDialog(new PopUp(), "Ingresa el nombre de la carrera", "Nueva Carrera", JOptionPane.WARNING_MESSAGE);
                 ErrorCarreraOP.setVisible(true);
             }
-
         }
-
     }
 
     public boolean verifica() {
@@ -1669,7 +1738,7 @@ public class Contenedor extends JFrame {
                 ms = (horas * 60 * 60 * 1000) + (minutos * 60 * 1000) + (segundos * 1000);
             }
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1686,7 +1755,10 @@ public class Contenedor extends JFrame {
             String fechaS = fechaFormato.format(fechaSQL);
             return fechaS;
         } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
+            d.setLocation(600, 400);
+            d.setVisible(true);
         }
         return "";
     }
@@ -1696,14 +1768,16 @@ public class Contenedor extends JFrame {
             Connection conn = DriverManager.getConnection(url, user, pass);
             java.util.Date fecha = new java.util.Date();
             java.sql.Timestamp horaSQL = new java.sql.Timestamp(fecha.getTime());
-            SimpleDateFormat horaFormato = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat horaFormato = new SimpleDateFormat("HH:mm:ss");
             String horaS = horaFormato.format(horaSQL);
             return horaS;
         } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
+            JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
+            d.setLocation(600, 400);
+            d.setVisible(true);
         }
         return "";
-
     }
 
     public String timediff(Long idf, String salida) {
@@ -1723,7 +1797,7 @@ public class Contenedor extends JFrame {
             }
 
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1748,7 +1822,7 @@ public class Contenedor extends JFrame {
             }
 
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1759,7 +1833,9 @@ public class Contenedor extends JFrame {
     public boolean RepetidoEX() {
         boolean R = false;
         try {
-            Long id_fecha = Long.parseLong(Fecha_EX.getText().replace("/", "").concat(ID_EX.getText()));
+            SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+            String fecha = formater.format(Date_EX.getDate());
+            Long id_fecha = Long.parseLong(fecha.replace("/", "").concat(ID_EX.getText()));
             ResultSet rs;
             Statement stm;
             Connection conn = DriverManager.getConnection(url, user, pass);
@@ -1770,7 +1846,7 @@ public class Contenedor extends JFrame {
                 R = !(id.isEmpty());
             }
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1792,7 +1868,7 @@ public class Contenedor extends JFrame {
                 R = !(id.isEmpty());
             }
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1820,7 +1896,7 @@ public class Contenedor extends JFrame {
                 d.setVisible(true);
             }
         } catch (SQLException e) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1850,14 +1926,14 @@ public class Contenedor extends JFrame {
                     Stmt.executeUpdate();
                     conn.close();
                 } catch (SQLException e) {
-                    JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane pane = new JOptionPane(e.getMessage(), JOptionPane.WARNING_MESSAGE);
                     JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
                     d.setLocation(600, 400);
                     d.setVisible(true);
                 }
             }
         } catch (SQLException ex) {
-            JOptionPane pane = new JOptionPane("Algo salio mal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane pane = new JOptionPane(ex.getMessage(), JOptionPane.WARNING_MESSAGE);
             JDialog d = pane.createDialog(new JFrame(), "Kaboooooom");
             d.setLocation(600, 400);
             d.setVisible(true);
@@ -1865,11 +1941,15 @@ public class Contenedor extends JFrame {
     }
 
     public String getFechaI() {
-        return Fecha_Inicial.getText();
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha = formater.format(Fecha_Inicial.getDate());
+        return fecha;
     }
 
     public String getFechaF() {
-        return Fecha_Final.getText();
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha = formater.format(Fecha_Final.getDate());
+        return fecha;
     }
 
     public String getNombre() {
@@ -1939,7 +2019,6 @@ public class Contenedor extends JFrame {
             consulta = Long.parseLong(ID_Consulta.getText());
             ErrorConsulta.setVisible(false);
         } catch (NumberFormatException | NullPointerException e) {
-            System.err.print(e.getMessage());
             ErrorConsulta.setVisible(true);
         }
         return consulta;
@@ -1978,6 +2057,7 @@ public class Contenedor extends JFrame {
     private javax.swing.JButton ConsultarFecha;
     private javax.swing.JTextField Correo_Baja;
     private javax.swing.JTextField Correo_Usuario;
+    private org.jdesktop.swingx.JXDatePicker Date_EX;
     private javax.swing.JButton Entrada;
     private javax.swing.JLabel ErrorBaja;
     private javax.swing.JLabel ErrorCarrera;
@@ -1990,9 +2070,10 @@ public class Contenedor extends JFrame {
     private javax.swing.JLabel ErrorSalida;
     private javax.swing.JLabel ErrorTelefono;
     private javax.swing.JLabel ErrorTipo;
-    private javax.swing.JTextField Fecha_EX;
-    private javax.swing.JTextField Fecha_Final;
-    private javax.swing.JTextField Fecha_Inicial;
+    private javax.swing.JLabel Error_Entrada;
+    private javax.swing.JLabel Error_Salida;
+    private org.jdesktop.swingx.JXDatePicker Fecha_Final;
+    private org.jdesktop.swingx.JXDatePicker Fecha_Inicial;
     private javax.swing.JTextField FieldOP;
     private javax.swing.JTextArea Historial;
     private javax.swing.JTextField Hora_Entrada;
@@ -2041,6 +2122,7 @@ public class Contenedor extends JFrame {
     private javax.swing.JTextField Tipo_Salida;
     private javax.swing.JButton TomarFoto;
     private javax.swing.JComboBox<String> Usuario_Tipo;
+    private javax.swing.JLabel foto;
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2063,12 +2145,9 @@ public class Contenedor extends JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
