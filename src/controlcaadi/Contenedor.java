@@ -277,7 +277,6 @@ public class Contenedor extends JFrame {
             }
         });
 
-        foto.setMaximumSize(new java.awt.Dimension(0, 0));
         foto.setPreferredSize(new java.awt.Dimension(410, 350));
 
         javax.swing.GroupLayout TabAltaLayout = new javax.swing.GroupLayout(TabAlta);
@@ -391,7 +390,7 @@ public class Contenedor extends JFrame {
                 .addComponent(Camara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TomarFoto)
-                .addGap(61, 61, 61)
+                .addGap(43, 43, 43)
                 .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1331,6 +1330,14 @@ public class Contenedor extends JFrame {
                             imagen.setIcon(null);
                         }
                     }
+                } else {
+                    ID_Baja.setText("");
+                    Nombre_Baja.setText("");
+                    Tipo_Baja.setText("");
+                    Telefono_Baja.setText("");
+                    Carrera_Baja.setText("");
+                    Correo_Baja.setText("");
+                    imagen.setIcon(null);
                 }
             } else {
                 JOptionPane.showMessageDialog(new PopUp(), "No existe esa persona en la base de datos", "Error 404", JOptionPane.WARNING_MESSAGE);
@@ -1344,6 +1351,7 @@ public class Contenedor extends JFrame {
     }//GEN-LAST:event_BajaActionPerformed
 
     private void TomarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomarFotoActionPerformed
+
         try {
             BufferedImage image = webcam.getImage();
             //nombre y formato de la imagen de salida
@@ -1352,11 +1360,10 @@ public class Contenedor extends JFrame {
             JDialog d = pane.createDialog(new JFrame(), "Exito");
             d.setLocation(600, 400);
             d.setVisible(true);
+            BufferedImage i = ImageIO.read(new File("../ControlCaadi/usuario.jpg"));
+            foto.setIcon(new ImageIcon(i));
         } catch (IOException ex) {
-
         }
-        ImageIcon img = new ImageIcon("../ControlCaadi/usuario.jpg");
-        foto.setIcon(img);
     }//GEN-LAST:event_TomarFotoActionPerformed
 
     private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
@@ -1389,7 +1396,7 @@ public class Contenedor extends JFrame {
                         Connection conn = DriverManager.getConnection(url, user, pass);
                         String query = "insert into usuario (id, Nombre, Tipo, Telefono,Carrera,Correo,Imagen)" + "values (?,?,?,?,?,?,?)";
                         PreparedStatement stmt = conn.prepareStatement(query);
-                        stmt.setLong(1, getIdUsuario());
+                        stmt.setString(1, getIdUsuario());
                         stmt.setString(2, getNombre());
                         stmt.setString(3, getTipo());
                         stmt.setLong(4, getTelefono());
@@ -1677,16 +1684,15 @@ public class Contenedor extends JFrame {
         String Nombre = Nombre_Usuario.getText();
         String Correo = Correo_Usuario.getText();
         String Carrera = "X";
+        String ID = ID_Usuario.getText();
 
-        try {
-            long ID = Long.parseLong(ID_Usuario.getText());
-        } catch (NumberFormatException | NullPointerException e) {
-            ErrorID.setVisible(true);
-        }
         try {
             long Telefono = Long.parseLong(Telefono_Usuario.getText());
         } catch (NumberFormatException | NullPointerException e) {
             ErrorTelefono.setVisible(true);
+        }
+        if (ID.isEmpty()) {
+            ErrorID.setVisible(true);
         }
         if (Nombre.isEmpty()) {
             ErrorNombre.setVisible(true);
@@ -1972,8 +1978,8 @@ public class Contenedor extends JFrame {
         return FieldOP.getText();
     }
 
-    public long getIdUsuario() {
-        return Long.parseLong(ID_Usuario.getText());
+    public String getIdUsuario() {
+        return ID_Usuario.getText();
     }
 
     public long getTelefono() {
