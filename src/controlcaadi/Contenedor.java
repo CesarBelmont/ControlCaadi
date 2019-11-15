@@ -204,19 +204,29 @@ public class Contenedor extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
 
+        Tab1.setFocusCycleRoot(true);
+        Tab1.setFocusTraversalPolicyProvider(true);
         Tab1.setFocusable(false);
 
+        TabAlta.setFocusCycleRoot(true);
+        TabAlta.setFocusTraversalPolicyProvider(true);
+
         jLabel1.setText("ID Usuario");
+
+        ID_Usuario.setFocusCycleRoot(true);
+        ID_Usuario.setFocusTraversalPolicyProvider(true);
 
         jLabel2.setText("Nombre Completo");
 
         Nombre_Usuario.setFocusCycleRoot(true);
+        Nombre_Usuario.setFocusTraversalPolicyProvider(true);
 
         jLabel3.setText("Carrera");
 
         jLabel4.setText("Telefono");
 
         Telefono_Usuario.setFocusCycleRoot(true);
+        Telefono_Usuario.setFocusTraversalPolicyProvider(true);
 
         Alta.setText("Dar de alta");
         Alta.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +238,7 @@ public class Contenedor extends JFrame {
         jLabel8.setText("Correo (No obligatorio)");
 
         Correo_Usuario.setFocusCycleRoot(true);
+        Correo_Usuario.setFocusTraversalPolicyProvider(true);
 
         ErrorID.setForeground(new java.awt.Color(255, 51, 51));
         ErrorID.setText("Verifica esta informacion");
@@ -243,8 +254,10 @@ public class Contenedor extends JFrame {
 
         Carrera_Usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Elige una opcion---", "Sistemas", "LDII", "FLE-ELE", "LRI", "Logistica Empresarial", "Otra" }));
         Carrera_Usuario.setFocusCycleRoot(true);
+        Carrera_Usuario.setFocusTraversalPolicyProvider(true);
 
         FieldOP.setFocusCycleRoot(true);
+        FieldOP.setFocusTraversalPolicyProvider(true);
 
         labelOP.setText("Carrera");
 
@@ -255,6 +268,7 @@ public class Contenedor extends JFrame {
 
         Usuario_Tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Elige una opcion---", "Servicio Social", "Tutor Par", "Practicas Profecionales", "Voluntario(a)" }));
         Usuario_Tipo.setFocusCycleRoot(true);
+        Usuario_Tipo.setFocusTraversalPolicyProvider(true);
 
         ErrorTipo.setForeground(java.awt.Color.red);
         ErrorTipo.setText("Selecciona una opcion");
@@ -698,6 +712,9 @@ public class Contenedor extends JFrame {
 
         Tab2.addTab("Salida", PanelSalida);
 
+        PanelExtemporaneo.setFocusCycleRoot(true);
+        PanelExtemporaneo.setFocusTraversalPolicyProvider(true);
+
         jLabel31.setText("ID");
 
         jLabel32.setText("Fecha");
@@ -849,6 +866,8 @@ public class Contenedor extends JFrame {
         );
 
         Tab1.addTab("Registro Horas", TabHoras);
+
+        TabConsulta.setFocusCycleRoot(true);
 
         jLabel15.setText("ID Usuario");
 
@@ -1139,7 +1158,7 @@ public class Contenedor extends JFrame {
                             Hora_Salida.setText("");
                             ImagenSalida.setIcon(null);
                         } else {
-                            rs = stm.executeQuery("select horas from horas" + " where id_fecha='" + id_fecha + "'");
+                            rs = stm.executeQuery("select salida from horas" + " where id_fecha='" + id_fecha + "'");
                             if (rs.next()) {
                                 //Tiempo antes del update
                                 String tiempo = rs.getString(1);
